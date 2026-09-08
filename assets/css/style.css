@@ -249,14 +249,9 @@ footer {
     font-size: 0.9rem;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ====== RESPONSIVE — JOBSHEET 3 ====== */
+/* Ubah dari 480px ke 768px supaya ukuran layar tablet / laptop menyempit (seperti 759px)*/
 @media (max-width: 768px) {
-    main section:nth-of-type(2) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
     .nav-toggle-label {
         display: block;
         order: 2;
@@ -274,6 +269,7 @@ footer {
         transition: max-height 0.3s ease;
     }
 
+    /* Trik checkbox: pas diklik (checked), menunya kebuka */
     .nav-toggle:checked ~ nav {
         max-height: 300px;
         margin-top: 0.75rem;
@@ -284,6 +280,13 @@ footer {
         gap: 0.25rem;
     }
 
+    main section:nth-of-type(2) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Untuk layar HP yang sangat kecil (<= 480px) */
+@media (max-width: 480px) {
     main section:nth-of-type(2) {
         grid-template-columns: 1fr;
     }
