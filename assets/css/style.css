@@ -36,6 +36,18 @@ header h1 {
     font-size: 1.5rem;
 }
 
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: none;
+    font-size: 1.8rem;
+    line-height: 1;
+    color: #fff;
+    cursor: pointer;
+}
+
 header nav ul {
     list-style: none;
     display: flex;
@@ -77,7 +89,7 @@ section h2 {
     color: #4338ca;
 }
 
-/* ===== Kartu Statistik Beranda (Grid 4 kolom, sejajar & sama tinggi) ===== */
+/* ===== Kartu Statistik Beranda ===== */
 main section:nth-of-type(2) {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -132,6 +144,10 @@ main section:nth-of-type(2) article p {
 }
 
 /* ===== Tabel ===== */
+.table-responsive {
+    overflow-x: auto;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -156,8 +172,6 @@ tbody tr:hover {
     background-color: #d1fae5;
 }
 
-/* Tombol aksi tabel — pakai class, bukan first-of-type/last-of-type,
-   supaya warnanya tetap benar walaupun jumlah tombol bertambah */
 td button {
     padding: 0.4rem 0.9rem;
     margin-right: 0.4rem;
@@ -166,6 +180,7 @@ td button {
     cursor: pointer;
     font-size: 0.85rem;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .btn-edit {
@@ -232,4 +247,44 @@ footer {
     padding: 1.25rem;
     color: #6b7280;
     font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    main section:nth-of-type(2) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-toggle-label {
+        display: block;
+        order: 2;
+    }
+
+    header h1 {
+        order: 1;
+    }
+
+    header nav {
+        order: 3;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .nav-toggle:checked ~ nav {
+        max-height: 300px;
+        margin-top: 0.75rem;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    main section:nth-of-type(2) {
+        grid-template-columns: 1fr;
+    }
 }
