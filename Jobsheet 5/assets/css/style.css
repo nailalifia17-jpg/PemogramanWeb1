@@ -1,0 +1,77 @@
+/* Color Palette Custom */
+.bg-custom {
+    background: linear-gradient(135deg, #5b21b6, #f472b6) !important;
+}
+
+.text-custom {
+    color: #5b21b6 !important;
+}
+
+/* Background Card Statistik */
+.bg-blue { background-color: #dbeafe !important; }
+.bg-green { background-color: #d1fae5 !important; }
+.bg-pink { background-color: #fce7f3 !important; }
+.bg-red { background-color: #fee2e2 !important; }
+
+/* Custom Buttons */
+.btn-edit {
+    background-color: #34d399 !important;
+    border: none;
+}
+.btn-edit:hover {
+    background-color: #10b981 !important;
+}
+
+.btn-detail {
+    background-color: #60a5fa !important;
+    border: none;
+}
+.btn-detail:hover {
+    background-color: #3b82f6 !important;
+}
+
+.btn-hapus {
+    background-color: #f472b6 !important;
+    border: none;
+}
+.btn-hapus:hover {
+    background-color: #ec4899 !important;
+}
+
+.btn-submit {
+    background-color: #5b21b6 !important;
+    border: none;
+}
+.btn-submit:hover {
+    background-color: #4c1d95 !important;
+}
+
+/* Hover Effect pada Card Statistik */
+article {
+    transition: transform 0.2s ease-in-out;
+}
+article:hover {
+    transform: translateY(-4px);
+}
+
+/* Header Tabel Berwarna Ungu Khas SIMPUS (Sesuai Jobsheet 4) */
+.table-header-custom th {
+    background-color: #5b21b6 !important;
+    color: #ffffff !important;
+    border-color: #4c1d95 !important;
+    vertical-align: middle;
+}
+
+/* Form Input Search & Validasi (Jobsheet 5) */
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.error-message {
+    font-size: 0.875rem;
+    color: #dc3545;
+}
+
+.search-container {
+    max-width: 320px;
+}
