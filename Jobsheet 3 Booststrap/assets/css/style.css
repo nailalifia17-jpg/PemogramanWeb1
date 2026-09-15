@@ -1,0 +1,71 @@
+/* Color Palette Custom */
+.bg-custom {
+    background: linear-gradient(135deg, #4338ca, #f9a8d4) !important;
+}
+
+.text-custom {
+    color: #4338ca !important;
+}
+
+.table-custom {
+    background-color: #4338ca !important;
+}
+
+/* Background Card Statistik */
+.bg-blue { background-color: #dbeafe !important; }
+.bg-green { background-color: #d1fae5 !important; }
+.bg-pink { background-color: #fce7f3 !important; }
+.bg-red { background-color: #fee2e2 !important; }
+
+/* Custom Buttons */
+.btn-edit {
+    background-color: #34d399 !important;
+    border: none;
+}
+.btn-edit:hover {
+    background-color: #10b981 !important;
+}
+
+.btn-detail {
+    background-color: #60a5fa !important;
+    border: none;
+}
+.btn-detail:hover {
+    background-color: #3b82f6 !important;
+}
+
+.btn-hapus {
+    background-color: #f472b6 !important;
+    border: none;
+}
+.btn-hapus:hover {
+    background-color: #ec4899 !important;
+}
+
+.btn-submit {
+    background-color: #4338ca !important;
+    border: none;
+}
+.btn-submit:hover {
+    background-color: #3730a3 !important;
+}
+
+/* Hover Effect pada Card Statistik */
+article {
+    transition: transform 0.2s ease-in-out;
+}
+article:hover {
+    transform: translateY(-4px);
+}
+
+/* Header Tabel Berwarna Ungu Khas SIMPUS */
+.table-header-custom {
+    background-color: #4338ca !important;
+    color: #ffffff !important;
+}
+
+/* Memastikan garis border tetap terlihat rapi dengan header berwarna */
+.table-header-custom th {
+    border-color: #3730a3 !important;
+    vertical-align: middle;
+}
