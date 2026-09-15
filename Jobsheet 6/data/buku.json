@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "judul": "Laskar Pelangi",
+        "pengarang": "Andrea Hirata",
+        "tahun": 2005,
+        "stok": 4
+    },
+    {
+        "id": 2,
+        "judul": "Bumi Manusia",
+        "pengarang": "Pramoedya Ananta Toer",
+        "tahun": 1980,
+        "stok": 2
+    },
+    {
+        "id": 3,
+        "judul": "Negeri 5 Menara",
+        "pengarang": "Ahmad Fuadi",
+        "tahun": 2009,
+        "stok": 0
+    },
+    {
+        "id": 4,
+        "judul": "Filosofi Teras",
+        "pengarang": "Henry Manampiring",
+        "tahun": 2018,
+        "stok": 5
+    },
+    {
+        "id": 5,
+        "judul": "Ronggeng Dukuh Paruk",
+        "pengarang": "Ahmad Tohari",
+        "tahun": 1982,
+        "stok": 1
+    },
+    {
+        "id": 6,
+        "judul": "Cantik Itu Luka",
+        "pengarang": "Eka Kurniawan",
+        "tahun": 2002,
+        "stok": 3
+    },
+    {
+        "id": 7,
+        "judul": "Pulang",
+        "pengarang": "Leila S. Chudori",
+        "tahun": 2012,
+        "stok": 2
+    },
+    {
+        "id": 8,
+        "judul": "Laut Bercerita",
+        "pengarang": "Leila S. Chudori",
+        "tahun": 2017,
+        "stok": 6
+    },
+    {
+        "id": 9,
+        "judul": "Hujan",
+        "pengarang": "Tere Liye",
+        "tahun": 2016,
+        "stok": 4
+    },
+    {
+        "id": 10,
+        "judul": "Perahu Kertas",
+        "pengarang": "Dee Lestari",
+        "tahun": 2009,
+        "stok": 3
+    }
+]

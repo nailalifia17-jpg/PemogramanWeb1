@@ -1,0 +1,26 @@
+[
+    {
+        "no_anggota": "A001",
+        "nama": "Siti Aminah",
+        "alamat": "Malang",
+        "no_hp": "081234567890"
+    },
+    {
+        "no_anggota": "A002",
+        "nama": "Budi Santoso",
+        "alamat": "Batu",
+        "no_hp": "081398765432"
+    },
+    {
+        "no_anggota": "A003",
+        "nama": "Citra Dewi",
+        "alamat": "Surabaya",
+        "no_hp": "085711223344"
+    },
+    {
+        "no_anggota": "A004",
+        "nama": "Dian Sastro",
+        "alamat": "Kediri",
+        "no_hp": "082155667788"
+    }
+]

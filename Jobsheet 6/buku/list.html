@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMPUS-Mini | Daftar Buku</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bg-light">
+    <!-- Header / Navbar -->
+    <header class="navbar navbar-expand-lg navbar-dark bg-custom shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">SIMPUS-Mini</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="list.html">Daftar Buku</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tambah.html">Tambah Buku</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../anggota/list.html">Daftar Anggota</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <section class="card border-0 shadow-sm mb-4">
+            <div class="card-body p-4">
+                <div class="row align-items-center mb-4">
+                    <div class="col-md-6">
+                        <h2 class="card-title text-custom fw-bold mb-0">Daftar Buku</h2>
+                    </div>
+                    <!-- Kolom Cari Buku -->
+                    <div class="col-md-6 d-flex justify-content-md-end mt-3 mt-md-0">
+                        <div class="input-group search-container">
+                            <span class="input-group-text bg-white text-secondary border-end-0">🔍</span>
+                            <input type="text" class="form-control search-box border-start-0 ps-0" placeholder="Cari buku...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover align-middle mb-0">
+                        <thead>
+                            <tr class="table-header-custom">
+                                <th scope="col" class="text-center" style="width: 5%;">No</th>
+                                <th scope="col">Judul</th>
+                                <th scope="col">Pengarang</th>
+                                <th scope="col" class="text-center" style="width: 10%;">Tahun</th>
+                                <th scope="col" class="text-center" style="width: 10%;">Stok</th>
+                                <th scope="col" class="text-center" style="width: 22%;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <!-- tbody kosong, diisi dinamis oleh buku.js -->
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-secondary py-3">
+        <p class="mb-0">&copy; 2026 SIMPUS-Mini &mdash; Jobsheet 6 (Fetch API & JSON)</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/buku.js"></script>
+</body>
+</html>
