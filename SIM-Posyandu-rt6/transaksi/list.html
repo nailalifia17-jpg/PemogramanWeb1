@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM Kas RT 6 | Daftar Transaksi</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>SIM Kas RT 6</h1>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Beranda</a></li>
+                <li><a href="list.html">Daftar Transaksi</a></li>
+                <li><a href="tambah.html">Tambah Transaksi</a></li>
+                <li><a href="../warga/list.html">Daftar Warga</a></li>
+                <li><a href="../laporan/index.html">Laporan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Daftar Transaksi Kas</h2>
+            <div class="filter-bar">
+                <input type="search" placeholder="Cari keterangan transaksi...">
+                <select>
+                    <option value="">Semua Jenis</option>
+                    <option value="masuk">Kas Masuk</option>
+                    <option value="keluar">Kas Keluar</option>
+                </select>
+                <button type="button" class="btn-filter">Cari</button>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Keterangan</th>
+                            <th>Jenis</th>
+                            <th>Jumlah</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01/07/2026</td>
+                            <td>Iuran warga bulan Juli</td>
+                            <td><span class="badge badge-masuk">Masuk</span></td>
+                            <td>Rp 600.000</td>
+                            <td>
+                                <button type="button" class="btn-edit">Edit</button>
+                                <button type="button" class="btn-hapus">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>03/07/2026</td>
+                            <td>Beli alat kebersihan</td>
+                            <td><span class="badge badge-keluar">Keluar</span></td>
+                            <td>Rp 150.000</td>
+                            <td>
+                                <button type="button" class="btn-edit">Edit</button>
+                                <button type="button" class="btn-hapus">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>05/07/2026</td>
+                            <td>Donasi acara 17 Agustus</td>
+                            <td><span class="badge badge-masuk">Masuk</span></td>
+                            <td>Rp 500.000</td>
+                            <td>
+                                <button type="button" class="btn-edit">Edit</button>
+                                <button type="button" class="btn-hapus">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10/07/2026</td>
+                            <td>Perbaikan lampu jalan</td>
+                            <td><span class="badge badge-keluar">Keluar</span></td>
+                            <td>Rp 300.000</td>
+                            <td>
+                                <button type="button" class="btn-edit">Edit</button>
+                                <button type="button" class="btn-hapus">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>15/07/2026</td>
+                            <td>Iuran warga susulan</td>
+                            <td><span class="badge badge-masuk">Masuk</span></td>
+                            <td>Rp 150.000</td>
+                            <td>
+                                <button type="button" class="btn-edit">Edit</button>
+                                <button type="button" class="btn-hapus">Hapus</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SIM Kas RT 6</p>
+    </footer>
+</body>
+</html>
