@@ -9,8 +9,7 @@
 <body>
     <header>
         <h1>SIM Kas RT 6</h1>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle">
-        <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+        <button type="button" id="nav-toggle-btn" class="nav-toggle-label" aria-label="Menu">&#9776;</button>
         <nav>
             <ul>
                 <li><a href="../index.html">Beranda</a></li>
@@ -25,6 +24,10 @@
     <main>
         <section>
             <h2>Daftar Warga</h2>
+            <div class="search-box">
+                <label for="search-input">Cari Nama / No. KK</label>
+                <input type="text" id="search-input" placeholder="Ketik nama atau no. KK...">
+            </div>
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -76,5 +79,6 @@
     <footer>
         <p>&copy; 2026 SIM Kas RT 6</p>
     </footer>
+    <script src="../assets/js/app.js"></script>
 </body>
 </html>

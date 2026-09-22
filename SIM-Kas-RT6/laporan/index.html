@@ -9,8 +9,7 @@
 <body>
     <header>
         <h1>SIM Kas RT 6</h1>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle">
-        <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+        <button type="button" id="nav-toggle-btn" class="nav-toggle-label" aria-label="Menu">&#9776;</button>
         <nav>
             <ul>
                 <li><a href="../index.html">Beranda</a></li>
@@ -25,11 +24,18 @@
     <main>
         <section>
             <h2>Laporan Kas Bulanan</h2>
+
+            <div class="kop-laporan print-only">
+                <h2>SIM Kas RT 6</h2>
+                <p>Jl. Contoh No. 6, RT 06 — Laporan Keuangan Kas</p>
+                <p>Periode: Juli 2026</p>
+            </div>
+
             <form style="margin-bottom: 1.5rem;">
                 <p style="display: inline-block; margin-right: 1rem; margin-bottom: 0;">
                     <label for="bulan">Bulan</label>
                     <select id="bulan" name="bulan">
-                        <option value="7">Juli</option>
+                        <option value="7" selected>Juli</option>
                         <option value="8">Agustus</option>
                         <option value="9">September</option>
                     </select>
@@ -42,60 +48,113 @@
                 </p>
                 <p style="display: inline-block; margin-bottom: 0;">
                     <button type="submit">Tampilkan</button>
-                    <button type="button" class="btn-edit" style="padding: 0.65rem 1.2rem;">Cetak Laporan</button>
+                    <button type="button" id="btn-cetak" class="btn-edit" style="padding: 0.65rem 1.2rem;">Cetak Laporan</button>
                 </p>
             </form>
 
-            <h3>Detail Transaksi</h3>
+            <!-- ===== PEMASUKAN ===== -->
+            <h3>A. Pemasukan (Kas Masuk)</h3>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th>Tanggal</th>
                             <th>Keterangan</th>
-                            <th>Jenis</th>
-                            <th>Jumlah</th>
+                            <th class="text-end">Jumlah</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>1</td>
                             <td>01/07/2026</td>
                             <td>Iuran warga bulan Juli</td>
-                            <td><span class="badge badge-masuk">Masuk</span></td>
-                            <td>Rp 600.000</td>
+                            <td class="text-end">Rp 600.000</td>
                         </tr>
                         <tr>
-                            <td>03/07/2026</td>
-                            <td>Beli alat kebersihan</td>
-                            <td><span class="badge badge-keluar">Keluar</span></td>
-                            <td>Rp 150.000</td>
-                        </tr>
-                        <tr>
+                            <td>2</td>
                             <td>05/07/2026</td>
                             <td>Donasi acara 17 Agustus</td>
-                            <td><span class="badge badge-masuk">Masuk</span></td>
-                            <td>Rp 500.000</td>
+                            <td class="text-end">Rp 500.000</td>
                         </tr>
                         <tr>
-                            <td>10/07/2026</td>
-                            <td>Perbaikan lampu jalan</td>
-                            <td><span class="badge badge-keluar">Keluar</span></td>
-                            <td>Rp 300.000</td>
-                        </tr>
-                        <tr>
+                            <td>3</td>
                             <td>15/07/2026</td>
                             <td>Iuran warga susulan</td>
-                            <td><span class="badge badge-masuk">Masuk</span></td>
-                            <td>Rp 150.000</td>
+                            <td class="text-end">Rp 150.000</td>
                         </tr>
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Subtotal Pemasukan</td>
+                            <td class="text-end">Rp 1.250.000</td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
+
+            <!-- ===== PENGELUARAN ===== -->
+            <h3>B. Pengeluaran (Kas Keluar)</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Tanggal</th>
+                            <th>Keterangan</th>
+                            <th class="text-end">Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>03/07/2026</td>
+                            <td>Beli alat kebersihan</td>
+                            <td class="text-end">Rp 150.000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>10/07/2026</td>
+                            <td>Perbaikan lampu jalan</td>
+                            <td class="text-end">Rp 300.000</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Subtotal Pengeluaran</td>
+                            <td class="text-end">Rp 450.000</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- ===== RINGKASAN / SALDO ===== -->
+            <h3>C. Ringkasan Saldo</h3>
+            <div class="ringkasan-laporan">
+                <div class="kas-card saldo-awal">
+                    <h4>Saldo Awal</h4>
+                    <p>Rp 0</p>
+                </div>
+                <div class="kas-card pemasukan">
+                    <h4>Total Pemasukan</h4>
+                    <p>Rp 1.250.000</p>
+                </div>
+                <div class="kas-card pengeluaran">
+                    <h4>Total Pengeluaran</h4>
+                    <p>Rp 450.000</p>
+                </div>
+                <div class="kas-card saldo-akhir">
+                    <h4>Saldo Akhir</h4>
+                    <p>Rp 800.000</p>
+                </div>
+            </div>
+
         </section>
     </main>
 
     <footer>
         <p>&copy; 2026 SIM Kas RT 6</p>
     </footer>
+    <script src="../assets/js/app.js"></script>
 </body>
 </html>
