@@ -1,139 +1,88 @@
-// ===== Menu hamburger (JS-driven, menggantikan checkbox hack) =====
-function initNavToggle() {
-    const toggleBtn = document.getElementById("nav-toggle-btn");
-    const nav = document.querySelector("header nav");
-    if (!toggleBtn || !nav) return;
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Toggle Navigasi Responsive
+    const navToggleBtn = document.getElementById("nav-toggle-btn");
+    const navMenu = document.querySelector("header nav");
 
-    toggleBtn.addEventListener("click", function () {
-        nav.classList.toggle("nav-open");
-    });
-}
-
-// ===== Konfirmasi hapus (front-end only, belum ke server) =====
-function initHapusConfirm() {
-    document.querySelectorAll(".btn-hapus").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-            const row = btn.closest("tr");
-            const cells = row ? row.querySelectorAll("td") : null;
-            const label = cells && cells[1] ? cells[1].textContent.trim() : "data ini";
-            const yakin = confirm("Yakin ingin menghapus \"" + label + "\"?");
-            if (yakin && row) {
-                row.remove();
-            }
+    if (navToggleBtn && navMenu) {
+        navToggleBtn.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
         });
-    });
-}
+    }
 
-// ===== Filter/pencarian tabel real-time =====
-function initTableFilter() {
-    const input = document.getElementById("search-input");
-    const table = document.querySelector(".table-responsive table");
-    if (!input || !table) return;
+    // 2. Load Data Warga Dinamis (Jobsheet 6 - Fetch API & JSON)
+    const tbodyWarga = document.querySelector("table tbody");
+    
+    if (tbodyWarga && window.location.pathname.includes("warga/list.html")) {
+        loadWargaData(tbodyWarga);
+    }
 
-    input.addEventListener("keyup", function () {
-        const keyword = input.value.toLowerCase();
-        const rows = table.querySelectorAll("tbody tr");
-        rows.forEach(function (row) {
-            const teks = row.textContent.toLowerCase();
-            row.style.display = teks.includes(keyword) ? "" : "none";
+    // 3. Form Tambah Warga Handler
+    const formTambah = document.getElementById("form-tambah");
+    if (formTambah) {
+        formTambah.addEventListener("submit", (e) => {
+            e.preventDefault();
+            alert("Data warga berhasil disimpan (Simulasi)!");
+            window.location.href = "list.html";
         });
-    });
-}
+    }
+});
 
-// ===== Validasi form (client-side) =====
-function tampilkanError(input, pesan) {
-    hapusError(input);
-    const span = document.createElement("span");
-    span.className = "error";
-    span.textContent = pesan;
-    input.insertAdjacentElement("afterend", span);
-}
+// Fungsi Asinkron untuk Mengambil Data Warga dari JSON
+async function loadWargaData(tbodyElement) {
+    // Tampilkan indikator loading sementara
+    tbodyElement.innerHTML = `<tr><td colspan="5" style="text-align: center;">Memuat data warga...</td></tr>`;
 
-function hapusError(input) {
-    const next = input.nextElementSibling;
-    if (next && next.classList.contains("error")) {
-        next.remove();
+    try {
+        const response = await fetch("../assets/data/warga.json");
+        
+        if (!response.ok) {
+            throw new Error(`Gagal memuat data: ${response.statusText}`);
+        }
+
+        const wargaList = await response.json();
+        renderWargaTable(wargaList, tbodyElement);
+
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        tbodyElement.innerHTML = `<tr><td colspan="5" style="text-align: center; color: red;">Gagal memuat data warga. Pastikan berjalan di local server (Live Server).</td></tr>`;
     }
 }
 
-function initValidasiForm() {
-    const form = document.getElementById("form-tambah");
-    if (!form) return;
+// Fungsi Merender Data ke dalam Tabel HTML menggunakan Event Delegation
+function renderWargaTable(data, tbodyElement) {
+    tbodyElement.innerHTML = ""; // Bersihkan kontainer/loading
 
-    form.addEventListener("submit", function (e) {
-        let valid = true;
+    if (data.length === 0) {
+        tbodyElement.innerHTML = `<tr><td colspan="5" style="text-align: center;">Tidak ada data warga.</td></tr>`;
+        return;
+    }
 
-        const tanggal = form.querySelector("[name='tanggal']");
-        if (tanggal && tanggal.value.trim() === "") {
-            tampilkanError(tanggal, "Tanggal wajib diisi.");
-            valid = false;
-        } else if (tanggal) {
-            hapusError(tanggal);
-        }
+    data.forEach((warga) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>${warga.no_kk}</td>
+            <td>${warga.nama}</td>
+            <td>${warga.alamat}</td>
+            <td>${warga.no_hp}</td>
+            <td>
+                <button type="button" class="btn-edit" data-kk="${warga.no_kk}">Edit</button>
+                <button type="button" class="btn-hapus" data-kk="${warga.no_kk}">Hapus</button>
+            </td>
+        `;
+        tbodyElement.appendChild(tr);
+    });
 
-        const keterangan = form.querySelector("[name='keterangan']");
-        if (keterangan && keterangan.value.trim() === "") {
-            tampilkanError(keterangan, "Keterangan wajib diisi.");
-            valid = false;
-        } else if (keterangan) {
-            hapusError(keterangan);
-        }
-
-        const jumlah = form.querySelector("[name='jumlah']");
-        if (jumlah) {
-            const nilai = parseInt(jumlah.value, 10);
-            if (isNaN(nilai) || nilai < 0) {
-                tampilkanError(jumlah, "Jumlah harus angka dan tidak boleh negatif.");
-                valid = false;
-            } else {
-                hapusError(jumlah);
+    // Implementasi Event Delegation untuk tombol aksi dalam tabel dinamis
+    tbodyElement.addEventListener("click", (e) => {
+        if (e.target.classList.contains("btn-hapus")) {
+            const kk = e.target.getAttribute("data-kk");
+            if (confirm(`Apakah Anda yakin ingin menghapus data dengan No. KK: ${kk}?`)) {
+                e.target.closest("tr").remove();
+                alert("Data berhasil dihapus.");
             }
-        }
-
-        const nama = form.querySelector("[name='nama']");
-        if (nama && nama.value.trim() === "") {
-            tampilkanError(nama, "Nama wajib diisi.");
-            valid = false;
-        } else if (nama) {
-            hapusError(nama);
-        }
-
-        const noKk = form.querySelector("[name='no_kk']");
-        if (noKk && noKk.value.trim() === "") {
-            tampilkanError(noKk, "No. KK wajib diisi.");
-            valid = false;
-        } else if (noKk) {
-            hapusError(noKk);
-        }
-
-        const alamat = form.querySelector("[name='alamat']");
-        if (alamat && alamat.value.trim() === "") {
-            tampilkanError(alamat, "Alamat wajib diisi.");
-            valid = false;
-        } else if (alamat) {
-            hapusError(alamat);
-        }
-
-        if (!valid) {
-            e.preventDefault();
+        } else if (e.target.classList.contains("btn-edit")) {
+            const kk = e.target.getAttribute("data-kk");
+            alert(`Fitur edit untuk No. KK ${kk} akan segera dibuka.`);
         }
     });
 }
-
-// ===== Cetak/download laporan sebagai PDF (pakai fitur print browser) =====
-function initCetakLaporan() {
-    const btn = document.getElementById("btn-cetak");
-    if (!btn) return;
-
-    btn.addEventListener("click", function () {
-        window.print();
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    initNavToggle();
-    initHapusConfirm();
-    initTableFilter();
-    initValidasiForm();
-    initCetakLaporan();
-});
