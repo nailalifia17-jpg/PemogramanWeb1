@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/../includes/koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tanggal = trim((string) ($_POST['tanggal'] ?? ''));
@@ -16,16 +17,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $_SESSION['transaksi'] ??= [];
-    $_SESSION['transaksi'][] = [
-        'tanggal' => $tanggal,
-        'keterangan' => $keterangan,
-        'jenis' => $jenis,
-        'jumlah' => $jumlah,
-        'bulan' => $bulan,
-        'tahun' => $tahun,
-        'metode' => $metode,
-    ];
+    try {
+        $db = koneksiDatabase();
+        $statement = $db->prepare('INSERT INTO transaksi (tanggal, bulan, tahun, keterangan, jenis, jumlah, metode) VALUES (:tanggal, :bulan, :tahun, :keterangan, :jenis, :jumlah, :metode)');
+        $statement->execute([
+            ':tanggal' => $tanggal,
+            ':bulan' => $bulan,
+            ':tahun' => $tahun,
+            ':keterangan' => $keterangan,
+            ':jenis' => $jenis,
+            ':jumlah' => $jumlah,
+            ':metode' => $metode,
+        ]);
+    } catch (Throwable $error) {
+        tampilkanKesalahanDatabase($error);
+    }
     $_SESSION['flash'] = ['pesan' => 'Transaksi berhasil disimpan.'];
 }
 

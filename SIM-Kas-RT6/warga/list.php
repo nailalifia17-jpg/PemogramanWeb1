@@ -1,10 +1,16 @@
 <?php
 $page_title = "Daftar Warga";
+require_once __DIR__ . '/../includes/data.php';
 include __DIR__ . '/../includes/header.php';
 
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
-$daftarWarga = $_SESSION['warga'] ?? [];
+try {
+    $db = koneksiDatabase();
+    $daftarWarga = ambilWarga($db);
+} catch (Throwable $error) {
+    tampilkanKesalahanDatabase($error);
+}
 ?>
 
 <div class="card shadow-sm border-0">

@@ -1,26 +1,23 @@
 <?php
 $page_title = "Laporan Kas";
+require_once __DIR__ . '/../includes/data.php';
 include __DIR__ . '/../includes/header.php';
 
-$daftarTransaksi = $_SESSION['transaksi'] ?? [];
 $filterBulan = filter_var($_GET['bulan'] ?? '', FILTER_VALIDATE_INT) ?: '';
 $filterTahun = filter_var($_GET['tahun'] ?? '', FILTER_VALIDATE_INT) ?: '';
 $namaBulan = [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'];
-$transaksiTerfilter = [];
-
-foreach ($daftarTransaksi as $transaksi) {
-    $tanggal = strtotime($transaksi['tanggal'] ?? '');
-    $bulanTransaksi = (int) ($transaksi['bulan'] ?? ($tanggal ? date('n', $tanggal) : 0));
-    $tahunTransaksi = (int) ($transaksi['tahun'] ?? ($tanggal ? date('Y', $tanggal) : 0));
-
-    if (($filterBulan !== '' && $bulanTransaksi !== $filterBulan) || ($filterTahun !== '' && $tahunTransaksi !== $filterTahun)) {
-        continue;
-    }
-
-    $transaksi['bulan_tampil'] = $bulanTransaksi;
-    $transaksi['tahun_tampil'] = $tahunTransaksi;
-    $transaksiTerfilter[] = $transaksi;
+try {
+    $db = koneksiDatabase();
+    $transaksiTerfilter = ambilTransaksi($db, $filterBulan !== '' ? $filterBulan : null, $filterTahun !== '' ? $filterTahun : null);
+} catch (Throwable $error) {
+    tampilkanKesalahanDatabase($error);
 }
+
+foreach ($transaksiTerfilter as &$transaksi) {
+    $transaksi['bulan_tampil'] = (int) $transaksi['bulan'];
+    $transaksi['tahun_tampil'] = (int) $transaksi['tahun'];
+}
+unset($transaksi);
 
 $totalMasuk = 0;
 $totalKeluar = 0;

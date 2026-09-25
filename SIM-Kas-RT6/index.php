@@ -1,17 +1,19 @@
 <?php
 $page_title = "Beranda";
+require_once __DIR__ . '/includes/data.php';
 include __DIR__ . '/includes/header.php';
 
-$daftarWarga = $_SESSION['warga'] ?? [];
-$daftarTransaksi = $_SESSION['transaksi'] ?? [];
-$totalWarga = count($daftarWarga);
-
-$totalMasuk = 0;
-$totalKeluar = 0;
-foreach ($daftarTransaksi as $t) {
-    if ($t['jenis'] === 'masuk') $totalMasuk += (int) $t['jumlah'];
-    if ($t['jenis'] === 'keluar') $totalKeluar += (int) $t['jumlah'];
+try {
+    $db = koneksiDatabase();
+    $totalWarga = (int) $db->query('SELECT COUNT(*) FROM warga')->fetchColumn();
+    $daftarTransaksi = ambilTransaksi($db);
+    $ringkasan = ringkasanTransaksi($db);
+} catch (Throwable $error) {
+    tampilkanKesalahanDatabase($error);
 }
+
+$totalMasuk = $ringkasan['total_masuk'];
+$totalKeluar = $ringkasan['total_keluar'];
 $saldo = $totalMasuk - $totalKeluar;
 ?>
 

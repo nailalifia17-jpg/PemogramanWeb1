@@ -1,13 +1,20 @@
 <?php
 $page_title = "Daftar Transaksi";
+require_once __DIR__ . '/../includes/data.php';
 include __DIR__ . '/../includes/header.php';
 
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
-$daftarTransaksi = $_SESSION['transaksi'] ?? [];
 $filterBulan = filter_var($_GET['bulan'] ?? '', FILTER_VALIDATE_INT) ?: '';
 $filterTahun = filter_var($_GET['tahun'] ?? '', FILTER_VALIDATE_INT) ?: '';
 $namaBulan = [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'];
+
+try {
+    $db = koneksiDatabase();
+    $daftarTransaksi = ambilTransaksi($db, $filterBulan !== '' ? $filterBulan : null, $filterTahun !== '' ? $filterTahun : null);
+} catch (Throwable $error) {
+    tampilkanKesalahanDatabase($error);
+}
 ?>
 
 <div class="card shadow-sm border-0">
