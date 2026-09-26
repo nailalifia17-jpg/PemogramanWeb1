@@ -1,0 +1,731 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f7fb;
+    color: #263238;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.site-header {
+    width: 100%;
+    background: linear-gradient(
+        90deg,
+        #4b36d1,
+        #e99ad0
+    );
+
+    color: white;
+}
+
+.header-inner {
+    min-height: 70px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    margin: 0;
+    font-size: 25px;
+    font-weight: bold;
+    white-space: nowrap;
+    color: white;
+    text-decoration: none;
+}
+
+/* ========================================
+   NAVIGASI
+   ======================================== */
+
+.site-header nav {
+    display: block;
+    margin-left: auto;
+    flex: 1;
+    min-width: 0;
+}
+
+.site-header nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    gap: 4px;
+}
+
+.site-header nav ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.site-header nav ul li a {
+    display: block;
+    width: auto;
+    padding: 10px;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    white-space: nowrap;
+    border-radius: 8px;
+
+    transition: 0.2s;
+}
+
+.site-header nav ul li a:hover,
+.site-header nav ul li a[aria-current="page"] {
+    background-color: rgba(255, 255, 255, 0.20);
+}
+
+/* ========================================
+   HAMBURGER
+   ======================================== */
+
+#nav-toggle-btn {
+    display: none;
+
+    border: none;
+    background: transparent;
+
+    color: white;
+
+    font-size: 30px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    padding: 5px 8px;
+    margin-left: auto;
+}
+
+.hamburger-icon {
+    display: block;
+    line-height: 1;
+}
+
+/* ========================================
+   MAIN
+   ======================================== */
+
+main {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 32px auto;
+    padding: 0 20px;
+
+    min-height: calc(100vh - 150px);
+}
+
+/* ========================================
+   CARD
+   ======================================== */
+
+.card {
+    background-color: white;
+
+    border-radius: 14px;
+
+    padding: 28px;
+
+    margin-bottom: 28px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+
+    border: 1px solid #e1e8f5;
+}
+
+/* ========================================
+   JUDUL
+   ======================================== */
+
+h1,
+h2,
+h3 {
+    color: #4438d4;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+
+    font-size: 25px;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+/* ========================================
+   BERANDA
+   ======================================== */
+
+.welcome {
+    background-color: white;
+
+    border-radius: 14px;
+
+    padding: 28px;
+
+    margin-bottom: 28px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+
+    border: 1px solid #e1e8f5;
+}
+
+.welcome h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.welcome p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* ========================================
+   RINGKASAN KEUANGAN
+   ======================================== */
+
+.summary {
+    background-color: white;
+
+    border-radius: 14px;
+
+    padding: 28px;
+
+    margin-bottom: 28px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+
+    border: 1px solid #e1e8f5;
+}
+
+.summary h2 {
+    margin-top: 0;
+}
+
+.summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+}
+
+/* ========================================
+   KOTAK RINGKASAN
+   ======================================== */
+
+.summary-card {
+    padding: 28px 20px;
+
+    border-radius: 14px;
+
+    text-align: center;
+
+    font-weight: bold;
+}
+
+.summary-card h3 {
+    color: #455a64;
+
+    font-size: 16px;
+
+    margin-bottom: 16px;
+}
+
+.summary-card p {
+    margin: 0;
+
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.summary-card.masuk {
+    background-color: #c9f7df;
+}
+
+.summary-card.keluar {
+    background-color: #ffdcdc;
+}
+
+.summary-card.saldo {
+    background-color: #d5e5ff;
+}
+
+.summary-card.masuk p {
+    color: green;
+}
+
+.summary-card.keluar p {
+    color: red;
+}
+
+.summary-card.saldo p {
+    color: blue;
+}
+
+/* ========================================
+   FORM
+   ======================================== */
+
+form {
+    background-color: white;
+
+    padding: 28px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+
+    border: 1px solid #e1e8f5;
+}
+
+label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+
+    color: #455a64;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #d8e2f0;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    font-family: inherit;
+
+    background-color: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+
+    border-color: #6b5ce7;
+
+    box-shadow:
+        0 0 0 2px rgba(107, 92, 231, 0.15);
+}
+
+textarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+/* ========================================
+   BUTTON
+   ======================================== */
+
+button,
+.btn {
+    display: inline-block;
+
+    padding: 11px 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #5142d8;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+button:hover,
+.btn:hover {
+    opacity: 0.88;
+}
+
+/* ========================================
+   TABEL
+   ======================================== */
+
+.table-responsive {
+    width: 100%;
+
+    overflow-x: auto;
+
+    background-color: white;
+
+    border-radius: 12px;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background-color: white;
+}
+
+th,
+td {
+    padding: 12px 14px;
+
+    border: 1px solid #dfe5ee;
+
+    text-align: left;
+}
+
+th {
+    background-color: #eeeafa;
+
+    color: #4438d4;
+
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #fafbff;
+}
+
+/* ========================================
+   PENCARIAN
+   ======================================== */
+
+#search-input {
+    width: 100%;
+
+    max-width: 400px;
+
+    margin-bottom: 20px;
+}
+
+/* ========================================
+   PESAN ERROR
+   ======================================== */
+
+.error {
+    display: block;
+
+    margin-top: -12px;
+    margin-bottom: 15px;
+
+    color: #d32f2f;
+
+    font-size: 14px;
+}
+
+.flash {
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    background-color: #dff6e8;
+    color: #176b3a;
+}
+
+.is-invalid {
+    border-color: #d32f2f;
+}
+
+.error-message {
+    margin-top: -12px;
+    margin-bottom: 15px;
+    color: #d32f2f;
+    font-size: 14px;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+footer {
+    width: 100%;
+
+    padding: 20px;
+
+    text-align: center;
+
+    color: #78909c;
+
+    font-size: 14px;
+}
+
+/* ========================================
+   LINK
+   ======================================== */
+
+a {
+    color: #5142d8;
+}
+
+/* ========================================
+   HAMBURGER
+   LAYAR TABLET / HP
+   ======================================== */
+
+@media screen and (max-width: 1000px) {
+
+    .header-inner {
+        position: relative;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 14px;
+    }
+
+    .brand {
+        font-size: 22px;
+        order: 1;
+    }
+
+    #nav-toggle-btn {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        order: 2;
+    }
+
+    .site-header nav {
+        display: none !important;
+        flex: 0 0 100%;
+        order: 3;
+        width: 100%;
+        margin: 8px 0 0;
+        padding: 8px 0 10px;
+    }
+
+    .site-header nav.show {
+        display: block !important;
+    }
+
+    .site-header nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 0;
+    }
+
+    .site-header nav ul li {
+        width: 100%;
+    }
+
+    .site-header nav ul li a {
+        width: 100%;
+        text-align: left;
+        padding: 10px 13px;
+        border-radius: 6px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   HP KECIL
+   ======================================== */
+
+@media screen and (max-width: 500px) {
+
+    .header-inner {
+        padding: 14px 15px 10px;
+    }
+
+    .brand {
+        font-size: 20px;
+    }
+
+    main {
+        margin-top: 20px;
+
+        padding: 0 12px;
+    }
+
+    .card,
+    .welcome,
+    .summary,
+    form {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .summary-card {
+        padding: 22px 15px;
+    }
+}
+
+/* ========================================
+   PRINT
+   ======================================== */
+
+@media print {
+
+    .site-header nav,
+    #nav-toggle-btn,
+    footer,
+    button {
+        display: none !important;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    main {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .card,
+    .summary,
+    .welcome,
+    form {
+        box-shadow: none;
+        border: none;
+    }
+}
+/* ===== Tambahan Jobsheet 7 ===== */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.badge-masuk { background-color: #c9f7df; color: #1b7a43; }
+.badge-keluar { background-color: #ffdcdc; color: #c0392b; }
+
+.search-box { margin-bottom: 16px; }
+.search-box label { display: block; margin-bottom: 6px; font-weight: bold; }
+
+.radio-group { display: inline-flex; gap: 16px; margin-top: 6px; }
+.radio-label { font-weight: normal !important; display: inline-flex !important; align-items: center; gap: 6px; }
+.radio-label input { width: auto !important; margin: 0 !important; }
+
+.btn-edit { background-color: #4a90d9; }
+.btn-hapus { background-color: #e05a7a; }
+
+.kop-laporan { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #4438d4; padding-bottom: 12px; }
+.print-only { display: none; }
+
+.ringkasan-laporan { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 16px; }
+.kas-card { border-radius: 12px; padding: 18px 12px; text-align: center; }
+.kas-card h4 { font-size: 14px; color: #455a64; margin-bottom: 6px; }
+.kas-card p { font-size: 20px; font-weight: bold; margin: 0; }
+.kas-card.saldo-awal { background-color: #e5e7eb; }
+.kas-card.pemasukan { background-color: #c9f7df; }
+.kas-card.pengeluaran { background-color: #ffdcdc; }
+.kas-card.saldo-akhir { background-color: #d5e5ff; }
+
+.text-end { text-align: right; }
+
+.form-hapus {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.activity-list { list-style: none; padding: 0; }
+.activity-list li { padding: 10px 0; border-bottom: 1px solid #eee; }
+.activity-list time { float: right; color: #999; font-size: 13px; }
+
+@media (max-width: 700px) {
+    .ringkasan-laporan { grid-template-columns: repeat(2, 1fr); }
+}
+@media print {
+    header, footer, form { display: none !important; }
+    .print-only { display: block !important; }
+}
+
+/* Bootstrap form controls need a small override because the legacy form rules
+   above intentionally make plain labels and inputs full width. */
+.form-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-right: 1rem;
+    padding-left: 0;
+}
+
+.form-check-input {
+    width: 1rem !important;
+    height: 1rem;
+    margin: 0 !important;
+    flex: 0 0 auto;
+}
+
+.form-check-label {
+    display: inline-block;
+    margin: 0;
+    color: #263238;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+fieldset {
+    min-width: 0;
+    border: 0;
+    padding: 0;
+}
+
+fieldset legend {
+    float: none;
+    width: auto;
+    margin-bottom: 0.5rem;
+}
