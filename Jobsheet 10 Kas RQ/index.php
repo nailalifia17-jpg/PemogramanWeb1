@@ -18,7 +18,7 @@ $saldo = $totalMasuk - $totalKeluar;
 ?>
 
 <div class="welcome">
-    <h2>Selamat Datang di Sistem Informasi Kas Yayasan Rumah Quran</h2>
+    <h2>Selamat Datang di Sistem Informasi Kas Yayasan Rumah Quran Mumtazah</h2>
     <p>Pencatatan pemasukan dan pengeluaran yayasan yang rapi, transparan, dan siap dilaporkan secara berkala.</p>
 </div>
 
@@ -34,7 +34,7 @@ $saldo = $totalMasuk - $totalKeluar;
             <p>Rp <?php echo number_format($totalKeluar, 0, ',', '.'); ?></p>
         </div>
         <div class="summary-card saldo">
-            <h3>Saldo Kas RT Akhir</h3>
+            <h3>Saldo Kas Akhir</h3>
             <p>Rp <?php echo number_format($saldo, 0, ',', '.'); ?></p>
         </div>
     </div>
@@ -49,7 +49,7 @@ $saldo = $totalMasuk - $totalKeluar;
             <?php foreach (array_slice(array_reverse($daftarTransaksi), 0, 3) as $t): ?>
                 <li>
                     <span class="badge badge-<?php echo $t['jenis']; ?>"><?php echo $t['jenis'] === 'masuk' ? 'Masuk' : 'Keluar'; ?></span>
-                    <?php echo htmlspecialchars($t['keterangan']); ?> â€”
+                    <?php echo htmlspecialchars($t['keterangan']); ?> &mdash;
                     Rp <?php echo number_format($t['jumlah'], 0, ',', '.'); ?>
                     <time><?php echo htmlspecialchars($t['tanggal']); ?></time>
                 </li>

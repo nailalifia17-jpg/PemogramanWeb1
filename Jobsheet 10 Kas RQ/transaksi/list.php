@@ -22,6 +22,23 @@ try {
 } catch (Throwable $error) {
     tampilkanKesalahanDatabase($error);
 }
+
+function renderBadgeKategori(string $kategori): string
+{
+    $peta = [
+        'Sedekah Subuh' => 'kategori-sedekah-subuh',
+        'Infaq' => 'kategori-infaq',
+        'Zakat Maal' => 'kategori-zakat-maal',
+        'Wakaf Pembebasan Tanah' => 'kategori-wakaf',
+        'Infaq TPQ' => 'kategori-infaq-tpq',
+        'Biaya Operasional' => 'kategori-operasional',
+        'Bisyaroh Pengajar' => 'kategori-bisyaroh',
+        'Biaya Sewa Ruko' => 'kategori-sewa',
+        'Lain-lain' => 'kategori-lain',
+    ];
+    $kelas = $peta[$kategori] ?? 'kategori-lain';
+    return '<span class="badge-kategori ' . $kelas . '">' . htmlspecialchars($kategori) . '</span>';
+}
 ?>
 
 <div class="card shadow-sm border-0">
@@ -76,7 +93,7 @@ try {
                             <td><?php echo htmlspecialchars($t['tanggal']); ?></td>
                             <td><?php echo htmlspecialchars($namaBulan[$bulanTransaksi] ?? '-'); ?></td>
                             <td><?php echo $tahunTransaksi ?: '-'; ?></td>
-                            <td><?php echo htmlspecialchars($t['kategori']); ?></td>
+                            <td><?php echo renderBadgeKategori($t['kategori']); ?></td>
                             <td><?php echo htmlspecialchars($t['keterangan']); ?></td>
                             <td><span class="badge text-bg-<?php echo $t['jenis'] === 'masuk' ? 'success' : 'danger'; ?>" role="status"><?php echo $t['jenis'] === 'masuk' ? 'Pemasukan' : 'Pengeluaran'; ?></span></td>
                             <td>Rp <?php echo number_format($t['jumlah'], 0, ',', '.'); ?></td>

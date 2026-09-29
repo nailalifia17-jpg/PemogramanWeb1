@@ -54,12 +54,12 @@ $saldoAkhir = $saldoAwal + $totalMasuk - $totalKeluar;
     </form>
 
     <div class="kop-laporan print-only">
-        <h2>Yayasan Rumah Quran</h2>
+        <h2>Yayasan Rumah Quran Mumtazah</h2>
         <p>Laporan Keuangan Pemasukan dan Pengeluaran</p>
         <p>Periode: <?php echo $filterBulan !== '' ? $namaBulan[$filterBulan] . ' ' : ''; ?><?php echo $filterTahun !== '' ? $filterTahun : 'Semua Tahun'; ?></p>
     </div>
 
-    <div class="d-flex flex-wrap gap-2 mb-4">
+    <div class="d-flex flex-wrap gap-2 mb-4 d-print-none">
         <button type="button" id="btn-cetak" class="btn btn-primary" onclick="window.print()">Download PDF</button>
         <a class="btn btn-success" href="export.php?format=excel&amp;bulan=<?php echo urlencode((string) $filterBulan); ?>&amp;tahun=<?php echo urlencode((string) $filterTahun); ?>">Download Excel</a>
     </div>
@@ -67,46 +67,46 @@ $saldoAkhir = $saldoAwal + $totalMasuk - $totalKeluar;
     <h3>A. Pemasukan (Kas Masuk)</h3>
     <div class="table-responsive">
         <table class="table table-striped table-hover align-middle" role="table">
-            <thead><tr><th scope="col">No.</th><th scope="col">Tanggal</th><th scope="col">Bulan</th><th scope="col">Tahun</th><th scope="col">Kategori</th><th scope="col">Keterangan</th><th scope="col" class="text-end">Jumlah</th></tr></thead>
+            <thead><tr><th scope="col">No.</th><th scope="col">Tanggal</th><th scope="col" class="d-print-none">Bulan</th><th scope="col" class="d-print-none">Tahun</th><th scope="col">Kategori</th><th scope="col">Keterangan</th><th scope="col" class="text-end">Jumlah</th></tr></thead>
             <tbody>
                 <?php $no = 1; $ada = false; ?>
                 <?php foreach ($transaksiTerfilter as $t): if ($t['jenis'] === 'masuk'): $ada = true; ?>
                     <tr>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo htmlspecialchars($t['tanggal']); ?></td>
-                        <td><?php echo htmlspecialchars($namaBulan[$t['bulan_tampil']] ?? '-'); ?></td>
-                        <td><?php echo $t['tahun_tampil'] ?: '-'; ?></td>
+                        <td class="d-print-none"><?php echo htmlspecialchars($namaBulan[$t['bulan_tampil']] ?? '-'); ?></td>
+                        <td class="d-print-none"><?php echo $t['tahun_tampil'] ?: '-'; ?></td>
                         <td><?php echo htmlspecialchars($t['kategori']); ?></td>
                         <td><?php echo htmlspecialchars($t['keterangan']); ?></td>
                         <td class="text-end">Rp <?php echo number_format($t['jumlah'], 0, ',', '.'); ?></td>
                     </tr>
                 <?php endif; endforeach; ?>
-                <?php if (!$ada): ?><tr><td colspan="7" class="text-center">Belum ada pemasukan.</td></tr><?php endif; ?>
+                <?php if (!$ada): ?><tr><td colspan="5" class="text-center">Belum ada pemasukan.</td><td colspan="2" class="d-print-none"></td></tr><?php endif; ?>
             </tbody>
-            <tfoot><tr><td colspan="6">Subtotal Pemasukan</td><td class="text-end">Rp <?php echo number_format($totalMasuk, 0, ',', '.'); ?></td></tr></tfoot>
+            <tfoot><tr><td colspan="4">Subtotal Pemasukan</td><td colspan="2" class="d-print-none"></td><td class="text-end">Rp <?php echo number_format($totalMasuk, 0, ',', '.'); ?></td></tr></tfoot>
         </table>
     </div>
 
     <h3>B. Pengeluaran (Kas Keluar)</h3>
     <div class="table-responsive">
         <table class="table table-striped table-hover align-middle" role="table">
-            <thead><tr><th scope="col">No.</th><th scope="col">Tanggal</th><th scope="col">Bulan</th><th scope="col">Tahun</th><th scope="col">Kategori</th><th scope="col">Keterangan</th><th scope="col" class="text-end">Jumlah</th></tr></thead>
+            <thead><tr><th scope="col">No.</th><th scope="col">Tanggal</th><th scope="col" class="d-print-none">Bulan</th><th scope="col" class="d-print-none">Tahun</th><th scope="col">Kategori</th><th scope="col">Keterangan</th><th scope="col" class="text-end">Jumlah</th></tr></thead>
             <tbody>
                 <?php $no = 1; $ada = false; ?>
                 <?php foreach ($transaksiTerfilter as $t): if ($t['jenis'] === 'keluar'): $ada = true; ?>
                     <tr>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo htmlspecialchars($t['tanggal']); ?></td>
-                        <td><?php echo htmlspecialchars($namaBulan[$t['bulan_tampil']] ?? '-'); ?></td>
-                        <td><?php echo $t['tahun_tampil'] ?: '-'; ?></td>
+                        <td class="d-print-none"><?php echo htmlspecialchars($namaBulan[$t['bulan_tampil']] ?? '-'); ?></td>
+                        <td class="d-print-none"><?php echo $t['tahun_tampil'] ?: '-'; ?></td>
                         <td><?php echo htmlspecialchars($t['kategori']); ?></td>
                         <td><?php echo htmlspecialchars($t['keterangan']); ?></td>
                         <td class="text-end">Rp <?php echo number_format($t['jumlah'], 0, ',', '.'); ?></td>
                     </tr>
                 <?php endif; endforeach; ?>
-                <?php if (!$ada): ?><tr><td colspan="7" class="text-center">Belum ada pengeluaran.</td></tr><?php endif; ?>
+                <?php if (!$ada): ?><tr><td colspan="5" class="text-center">Belum ada pengeluaran.</td><td colspan="2" class="d-print-none"></td></tr><?php endif; ?>
             </tbody>
-            <tfoot><tr><td colspan="6">Subtotal Pengeluaran</td><td class="text-end">Rp <?php echo number_format($totalKeluar, 0, ',', '.'); ?></td></tr></tfoot>
+            <tfoot><tr><td colspan="4">Subtotal Pengeluaran</td><td colspan="2" class="d-print-none"></td><td class="text-end">Rp <?php echo number_format($totalKeluar, 0, ',', '.'); ?></td></tr></tfoot>
         </table>
     </div>
 

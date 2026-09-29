@@ -20,18 +20,8 @@ unset($_SESSION['flash']);
             <label for="tanggal" class="form-label">Tanggal</label>
             <input type="date" id="tanggal" name="tanggal" class="form-control" value="<?php echo date('Y-m-d'); ?>" required>
         </div>
-        <div class="col-md-3">
-            <label for="bulan" class="form-label">Bulan</label>
-            <select id="bulan" name="bulan" class="form-select" required>
-                <?php for ($bulan = 1; $bulan <= 12; $bulan++): ?>
-                    <option value="<?php echo $bulan; ?>"<?php echo (int) date('n') === $bulan ? ' selected' : ''; ?>><?php echo date('F', mktime(0, 0, 0, $bulan, 1)); ?></option>
-                <?php endfor; ?>
-            </select>
-        </div>
-        <div class="col-md-3">
-            <label for="tahun" class="form-label">Tahun</label>
-            <input type="number" id="tahun" name="tahun" class="form-control" min="2000" max="2100" value="<?php echo date('Y'); ?>" required>
-        </div>
+            <input type="hidden" id="bulan" name="bulan" value="<?php echo date('n'); ?>">
+            <input type="hidden" id="tahun" name="tahun" value="<?php echo date('Y'); ?>">
         <div class="col-md-6">
             <label for="keterangan" class="form-label">Keterangan</label>
             <input type="text" id="keterangan" name="keterangan" class="form-control" placeholder="Contoh: Iuran warga bulan Agustus" required>

@@ -13,14 +13,14 @@ $base = $__rel === '' ? '' : str_repeat('../', substr_count($__rel, '/') + 1);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIM Kas Yayasan RQ<?php echo isset($page_title) ? ' | ' . $page_title : ''; ?></title>
+    <title>SIM Kas Yayasan Rumah Quran Mumtazah<?php echo isset($page_title) ? ' | ' . $page_title : ''; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo $base; ?>assets/css/style.css">
 </head>
 <body>
 <header class="site-header">
     <div class="header-inner">
-        <a class="brand" href="<?php echo $base; ?>index.php"><img src="<?php echo $base; ?>assets/images/logo-rq.svg" alt="Logo Yayasan Rumah Quran"><span>Yayasan Rumah Quran</span></a>
+        <a class="brand" href="<?php echo $base; ?>index.php"><img src="<?php echo $base; ?>assets/images/logo-rq.svg" alt="Logo Yayasan Rumah Quran Mumtazah"><span>Yayasan Rumah Quran Mumtazah</span></a>
         <button type="button" id="nav-toggle-btn" class="navbar-toggler" aria-controls="navbarNav" aria-expanded="false" aria-label="Buka menu">
             <span class="hamburger-icon" aria-hidden="true">&#9776;</span>
         </button>

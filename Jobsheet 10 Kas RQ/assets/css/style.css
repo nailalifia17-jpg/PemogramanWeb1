@@ -22,8 +22,8 @@ body {
     width: 100%;
     background: linear-gradient(
         90deg,
-        #4b36d1,
-        #e99ad0
+        #1b5e3f,
+        #8bc53f
     );
 
     color: white;
@@ -183,7 +183,7 @@ main {
 h1,
 h2,
 h3 {
-    color: #4438d4;
+    color: #1b5e3f;
 }
 
 h2 {
@@ -296,7 +296,7 @@ h3 {
 }
 
 .summary-card.saldo {
-    background-color: #d5e5ff;
+    background-color: #fdf1cf;
 }
 
 .summary-card.masuk p {
@@ -308,7 +308,7 @@ h3 {
 }
 
 .summary-card.saldo p {
-    color: blue;
+    color: #8a6215;
 }
 
 /* ========================================
@@ -363,10 +363,10 @@ select:focus,
 textarea:focus {
     outline: none;
 
-    border-color: #6b5ce7;
+    border-color: #4b8f3f;
 
     box-shadow:
-        0 0 0 2px rgba(107, 92, 231, 0.15);
+        0 0 0 2px rgba(75, 143, 63, 0.15);
 }
 
 textarea {
@@ -389,7 +389,7 @@ button,
 
     border-radius: 8px;
 
-    background-color: #5142d8;
+    background-color: #1b5e3f;
 
     color: white;
 
@@ -441,9 +441,9 @@ td {
 }
 
 th {
-    background-color: #eeeafa;
+    background-color: #eaf3de;
 
-    color: #4438d4;
+    color: #1b5e3f;
 
     font-weight: bold;
 }
@@ -519,7 +519,7 @@ footer {
    ======================================== */
 
 a {
-    color: #5142d8;
+    color: #1b5e3f;
 }
 
 /* ========================================
@@ -674,7 +674,7 @@ a {
 .btn-edit { background-color: #4a90d9; }
 .btn-hapus { background-color: #e05a7a; }
 
-.kop-laporan { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #4438d4; padding-bottom: 12px; }
+.kop-laporan { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #1b5e3f; padding-bottom: 12px; }
 .print-only { display: none; }
 
 .ringkasan-laporan { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 16px; }
@@ -684,7 +684,7 @@ a {
 .kas-card.saldo-awal { background-color: #e5e7eb; }
 .kas-card.pemasukan { background-color: #c9f7df; }
 .kas-card.pengeluaran { background-color: #ffdcdc; }
-.kas-card.saldo-akhir { background-color: #d5e5ff; }
+.kas-card.saldo-akhir { background-color: #fdf1cf; }
 
 .text-end { text-align: right; }
 
@@ -744,4 +744,55 @@ fieldset legend {
     float: none;
     width: auto;
     margin-bottom: 0.5rem;
+}
+
+/* ===== Badge Kategori Transaksi ===== */
+.badge-kategori {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.kategori-sedekah-subuh { background-color: #fef3c7; color: #92620a; }
+.kategori-infaq { background-color: #ffedd5; color: #9a3f12; }
+.kategori-zakat-maal { background-color: #ede9fe; color: #5b3ea6; }
+.kategori-wakaf { background-color: #fce7f3; color: #9d2464; }
+.kategori-infaq-tpq { background-color: #dcfce7; color: #166534; }
+.kategori-operasional { background-color: #dbeafe; color: #1e4d8c; }
+.kategori-bisyaroh { background-color: #ccfbf1; color: #0f766e; }
+.kategori-sewa { background-color: #e0e7ff; color: #3730a3; }
+.kategori-lain { background-color: #f1f5f9; color: #475569; }
+
+/* Ukuran nama yayasan di header supaya muat satu baris */
+@media screen and (min-width: 1001px) {
+    .brand {
+        font-size: 21px;
+    }
+}
+/* ===== Tabel Buku Kas khusus PDF ===== */
+.tabel-buku-kas th {
+    background-color: #d9d9d9;
+    color: #000;
+    text-align: center;
+}
+.tabel-buku-kas td,
+.tabel-buku-kas th {
+    border: 1px solid #808080;
+}
+.tabel-buku-kas .baris-label-seksi td {
+    border: none;
+    font-weight: bold;
+    padding-top: 10px;
+}
+.tabel-buku-kas .baris-total-cetak td {
+    border-top: 2px solid #000;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+.tabel-buku-kas .baris-saldo-akhir-cetak td {
+    background-color: #fdf1cf;
+    border: 1px solid #808080;
 }
