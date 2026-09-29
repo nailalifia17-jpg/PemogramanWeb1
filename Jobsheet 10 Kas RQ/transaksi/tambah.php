@@ -20,8 +20,8 @@ unset($_SESSION['flash']);
             <label for="tanggal" class="form-label">Tanggal</label>
             <input type="date" id="tanggal" name="tanggal" class="form-control" value="<?php echo date('Y-m-d'); ?>" required>
         </div>
-            <input type="hidden" id="bulan" name="bulan" value="<?php echo date('n'); ?>">
-            <input type="hidden" id="tahun" name="tahun" value="<?php echo date('Y'); ?>">
+        <input type="hidden" id="bulan" name="bulan" value="<?php echo date('n'); ?>">
+        <input type="hidden" id="tahun" name="tahun" value="<?php echo date('Y'); ?>">
         <div class="col-md-6">
             <label for="keterangan" class="form-label">Keterangan</label>
             <input type="text" id="keterangan" name="keterangan" class="form-control" placeholder="Contoh: Iuran warga bulan Agustus" required>
@@ -46,6 +46,7 @@ unset($_SESSION['flash']);
             <select id="metode" name="metode" class="form-select" required>
                 <option value="tunai">Tunai</option>
                 <option value="transfer">Transfer</option>
+                <option value="qris">Qris</option>
             </select>
         </div>
         <div class="col-12">
