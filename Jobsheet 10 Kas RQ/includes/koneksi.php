@@ -12,11 +12,11 @@ function koneksiDatabase(): PDO
         throw new RuntimeException('Ekstensi pdo_pgsql belum aktif. Aktifkan pdo_pgsql di php.ini Laragon lalu restart server.');
     }
 
-    $host = getenv('SIMKAS_DB_HOST') ?: '127.0.0.1';
+    $host = getenv('SIMKAS_DB_HOST') ?: 'ep-steep-moon-b4fuw3di-pooler.c-6.us-east-2.aws.neon.tech';
     $port = getenv('SIMKAS_DB_PORT') ?: '5432';
-    $database = getenv('SIMKAS_DB_NAME') ?: 'sim_kas_yayasan_rq';
-    $user = getenv('SIMKAS_DB_USER') ?: 'postgres';
-    $password = getenv('SIMKAS_DB_PASS') ?: 'postgres';
+    $database = getenv('SIMKAS_DB_NAME') ?: 'neondb';
+    $user = getenv('SIMKAS_DB_USER') ?: 'neondb_owner';
+    $password = getenv('SIMKAS_DB_PASS') ?: 'npg_ZhEDWPQqU8z9';
     $dsn = "pgsql:host={$host};port={$port};dbname={$database}";
 
     $pdo = new PDO($dsn, $user, $password, [
