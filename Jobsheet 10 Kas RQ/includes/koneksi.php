@@ -17,7 +17,7 @@ function koneksiDatabase(): PDO
     $database = getenv('SIMKAS_DB_NAME') ?: 'neondb';
     $user = getenv('SIMKAS_DB_USER') ?: 'neondb_owner';
     $password = getenv('SIMKAS_DB_PASS') ?: 'npg_ZhEDWPQqU8z9';
-    $dsn = "pgsql:host={$host};port={$port};dbname={$database}";
+    $dsn = "pgsql:host={$host};port={$port};dbname={$database};sslmode=require";
 
     $pdo = new PDO($dsn, $user, $password, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
