@@ -5,7 +5,7 @@ include __DIR__ . '/../includes/header.php';
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
 ?>
-<div class="card shadow-sm border-0 auth-card">
+<div class="card shadow-sm border-0">
     <h2>Daftar Akun Pengurus</h2>
     <?php if ($flash): ?><p class="flash"><?php echo htmlspecialchars($flash['pesan']); ?></p><?php endif; ?>
     <form method="post" action="proses_register.php" class="row g-3">
@@ -18,4 +18,3 @@ unset($_SESSION['flash']);
     </form>
 </div>
 <?php include __DIR__ . '/../includes/footer.php'; ?>
-
