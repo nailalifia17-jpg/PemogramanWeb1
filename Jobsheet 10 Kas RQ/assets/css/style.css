@@ -21,8 +21,10 @@
 html { scroll-behavior: smooth; }
 
 body {
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0;
+    line-height: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -36,14 +38,22 @@ body {
     background-attachment: fixed;
 }
 
+body > header,
+body > main,
+body > footer {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
 /* ========================================
    HEADER & NAVIGASI
    ======================================== */
 .site-header {
     position: sticky;
-    top: 0;
+    top: 0 !important;
     z-index: 1030;
     width: 100%;
+    margin-top: 0 !important;
     color: #fff;
     background: linear-gradient(105deg, #0f4a2a 0%, #1f7a4d 60%, #5f9f3a 100%);
     box-shadow: 0 1px 0 rgba(255,255,255,.18) inset, 0 8px 24px -8px rgba(15, 74, 42, .55);

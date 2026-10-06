@@ -60,7 +60,7 @@ $saldoAkhir = $saldoAwal + $totalMasuk - $totalKeluar;
     </div>
 
     <div class="d-flex flex-wrap gap-2 mb-4 d-print-none">
-        <button type="button" id="btn-cetak" class="btn btn-primary" onclick="window.print()">Download PDF</button>
+        <a class="btn btn-primary" href="print.php?bulan=<?php echo urlencode((string) $filterBulan); ?>&amp;tahun=<?php echo urlencode((string) $filterTahun); ?>" target="_blank" rel="noopener">Download PDF</a>
         <a class="btn btn-success" href="export.php?format=excel&amp;bulan=<?php echo urlencode((string) $filterBulan); ?>&amp;tahun=<?php echo urlencode((string) $filterTahun); ?>">Download Excel</a>
     </div>
 

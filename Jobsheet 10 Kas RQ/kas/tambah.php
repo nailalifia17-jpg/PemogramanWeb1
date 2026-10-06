@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once __DIR__ . '/../includes/auth.php';
 wajibPeran(['bendahara']);
 $page_title = "Tambah Transaksi Kas";
@@ -23,7 +23,7 @@ unset($_SESSION['flash']);
         </p>
         <p>
             <label for="keterangan">Keterangan / Uraian</label><br>
-            <input type="text" id="keterangan" name="keterangan" placeholder="Contoh: Iuran Warga Blk A No. 5" required style="width: 100%; max-width: 400px; padding: 6px;">
+            <input type="text" id="keterangan" name="keterangan" placeholder="Contoh: Iuran Anggota Blk A No. 5" required style="width: 100%; max-width: 400px; padding: 6px;">
         </p>
         <p>
             <label for="jenis">Jenis Transaksi</label><br>

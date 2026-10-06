@@ -1,4 +1,4 @@
-﻿# SIM Kas Yayasan RQ - Jobsheet 10
+# SIM Kas Yayasan RQ - Jobsheet 10
 
 Versi ini melanjutkan Jobsheet 9 tanpa mengubah alur dan tampilan utama SIM Kas Yayasan RQ. Penyimpanan data menggunakan PostgreSQL, CRUD tetap tersedia, dan sekarang ditambahkan autentikasi serta manajemen sesi.
 
@@ -16,7 +16,7 @@ Versi ini melanjutkan Jobsheet 9 tanpa mengubah alur dan tampilan utama SIM Kas 
 
 ## Fitur Jobsheet 9
 
-- Edit dan hapus data warga.
+- Edit dan hapus data anggota.
 - Edit dan hapus transaksi kas.
 - Hapus hanya melalui form `POST` dengan konfirmasi JavaScript.
 - Pencarian server-side menggunakan `ILIKE`.
@@ -44,6 +44,8 @@ psql -U postgres -d sim_kas_yayasan_rq -f sql/01_schema.sql
 ```bash
 psql -U postgres -d sim_kas_yayasan_rq -f sql/02_users.sql
 ```
+
+Jika database sudah berisi data dari versi lama, jalankan `sql/03_migrasi_anggota.sql` sebelum `sql/01_schema.sql` agar tabel dan data anggota tetap terpakai.
 
 Konfigurasi default aplikasi adalah host `127.0.0.1`, port `5432`, database `sim_kas_yayasan_rq`, user `postgres`, dan password `postgres`. Nilai ini dapat diganti melalui environment variable `SIMKAS_DB_HOST`, `SIMKAS_DB_PORT`, `SIMKAS_DB_NAME`, `SIMKAS_DB_USER`, dan `SIMKAS_DB_PASS`.
 
@@ -79,13 +81,13 @@ Gunakan peran `Bendahara` untuk akun yang mengelola data. Gunakan peran `Ketua R
 ## Struktur CRUD
 
 ```text
-warga/list.php                         # Read, pencarian, pagination
-warga/edit.php                         # Form Update
+anggota/list.php                         # Read, pencarian, pagination
+anggota/edit.php                         # Form Update
 transaksi/list.php                     # Read, filter, pencarian, pagination
 transaksi/edit.php                     # Form Update
-proses/proses_edit_warga.php           # UPDATE warga
+proses/proses_edit_anggota.php           # UPDATE anggota
 proses/proses_edit_transaksi.php       # UPDATE transaksi
-proses/hapus_warga.php                 # DELETE warga via POST
+proses/hapus_anggota.php                 # DELETE anggota via POST
 proses/hapus_transaksi.php             # DELETE transaksi via POST
 ```
 

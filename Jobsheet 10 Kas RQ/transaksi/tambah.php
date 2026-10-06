@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once __DIR__ . '/../includes/auth.php';
 wajibPeran(['bendahara']);
 $page_title = "Tambah Transaksi";
@@ -24,7 +24,7 @@ unset($_SESSION['flash']);
         <input type="hidden" id="tahun" name="tahun" value="<?php echo date('Y'); ?>">
         <div class="col-md-6">
             <label for="keterangan" class="form-label">Keterangan</label>
-            <input type="text" id="keterangan" name="keterangan" class="form-control" placeholder="Contoh: Iuran warga bulan Agustus" required>
+            <input type="text" id="keterangan" name="keterangan" class="form-control" placeholder="Contoh: Iuran anggota bulan Agustus" required>
         </div>
         <div class="col-md-6">
             <label for="jenis" class="form-label">Jenis Transaksi</label>
