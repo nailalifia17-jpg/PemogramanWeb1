@@ -141,7 +141,7 @@ function initValidasiForm() {
 
 
             // ==============================
-            // FORM WARGA
+            // FORM ANGGOTA
             // ==============================
 
             const nama =

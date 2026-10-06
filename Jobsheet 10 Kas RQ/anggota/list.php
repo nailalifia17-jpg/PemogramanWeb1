@@ -1,6 +1,6 @@
-﻿<?php
+<?php
 require_once __DIR__ . '/../includes/auth.php';
-$page_title = "Daftar Warga";
+$page_title = "Daftar Anggota";
 require_once __DIR__ . '/../includes/data.php';
 include __DIR__ . '/../includes/header.php';
 
@@ -11,17 +11,17 @@ $page = max(1, (int) ($_GET['page'] ?? 1));
 $perPage = 5;
 try {
     $db = koneksiDatabase();
-    $totalData = hitungWarga($db, $q);
+    $totalData = hitungAnggota($db, $q);
     $totalPage = max(1, (int) ceil($totalData / $perPage));
     $page = min($page, $totalPage);
-    $daftarWarga = ambilWargaHalaman($db, $q, $perPage, ($page - 1) * $perPage);
+    $daftarAnggota = ambilAnggotaHalaman($db, $q, $perPage, ($page - 1) * $perPage);
 } catch (Throwable $error) {
     tampilkanKesalahanDatabase($error);
 }
 ?>
 
 <div class="card shadow-sm border-0">
-    <h2>Daftar Warga</h2>
+    <h2>Daftar Anggota</h2>
 
     <?php if ($flash): ?>
         <p class="flash"><?php echo htmlspecialchars($flash['pesan']); ?></p>
@@ -41,10 +41,10 @@ try {
                 <tr><th scope="col">No. KK</th><th scope="col">Nama Kepala Keluarga</th><th scope="col">Alamat</th><th scope="col">No. HP</th><th scope="col">Status Kependudukan</th><th scope="col">Aksi</th></tr>
             </thead>
             <tbody>
-                <?php if (empty($daftarWarga)): ?>
-                    <tr><td colspan="6" class="text-center empty-state">Belum ada data warga. Silakan tambah lewat menu "Tambah Warga".</td></tr>
+                <?php if (empty($daftarAnggota)): ?>
+                    <tr><td colspan="6" class="text-center empty-state">Belum ada data anggota. Silakan tambah lewat menu "Tambah Anggota".</td></tr>
                 <?php else: ?>
-                    <?php foreach ($daftarWarga as $w): ?>
+                    <?php foreach ($daftarAnggota as $w): ?>
                         <tr>
                             <td><?php echo htmlspecialchars($w['no_kk']); ?></td>
                             <td><?php echo htmlspecialchars($w['nama']); ?></td>
@@ -54,7 +54,7 @@ try {
                             <td>
                                 <?php if (($_SESSION['role'] ?? '') === 'bendahara'): ?>
                                     <a href="edit.php?id=<?php echo (int) $w['id']; ?>" class="btn btn-sm btn-outline-primary">Edit</a>
-                                    <form method="post" action="../proses/hapus_warga.php" class="d-inline form-hapus"><input type="hidden" name="id" value="<?php echo (int) $w['id']; ?>"><button type="submit" class="btn btn-sm btn-outline-danger">Hapus</button></form>
+                                    <form method="post" action="../proses/hapus_anggota.php" class="d-inline form-hapus"><input type="hidden" name="id" value="<?php echo (int) $w['id']; ?>"><button type="submit" class="btn btn-sm btn-outline-danger">Hapus</button></form>
                                 <?php else: ?>
                                     <span class="text-muted">Lihat saja</span>
                                 <?php endif; ?>
@@ -66,7 +66,7 @@ try {
         </table>
     </div>
     <?php if ($totalPage > 1): ?>
-        <nav aria-label="Pagination warga" class="mt-3"><ul class="pagination">
+        <nav aria-label="Pagination anggota" class="mt-3"><ul class="pagination">
             <?php for ($nomor = 1; $nomor <= $totalPage; $nomor++): ?>
                 <li class="page-item<?php echo $nomor === $page ? ' active' : ''; ?>"><a class="page-link" href="?q=<?php echo urlencode($q); ?>&page=<?php echo $nomor; ?>"><?php echo $nomor; ?></a></li>
             <?php endfor; ?>

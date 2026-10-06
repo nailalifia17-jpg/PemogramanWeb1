@@ -1,7 +1,7 @@
-﻿<?php
+<?php
 require_once __DIR__ . '/../includes/auth.php';
 wajibPeran(['bendahara']);
-$page_title = "Tambah Warga";
+$page_title = "Tambah Anggota";
 include __DIR__ . '/../includes/header.php';
 
 $flash = $_SESSION['flash'] ?? null;
@@ -9,13 +9,13 @@ unset($_SESSION['flash']);
 ?>
 
 <div class="card shadow-sm border-0">
-    <h2>Tambah Warga</h2>
+    <h2>Tambah Anggota</h2>
 
     <?php if ($flash): ?>
         <p class="flash"><?php echo htmlspecialchars($flash['pesan']); ?></p>
     <?php endif; ?>
 
-    <form id="form-tambah" method="post" action="../proses/proses_tambah_warga.php" class="row g-3">
+    <form id="form-tambah" method="post" action="../proses/proses_tambah_anggota.php" class="row g-3">
         <div class="col-md-6">
             <label for="nama" class="form-label">Nama Kepala Keluarga</label>
             <input type="text" id="nama" name="nama" class="form-control" required>
@@ -40,7 +40,7 @@ unset($_SESSION['flash']);
             </select>
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Simpan Warga</button>
+            <button type="submit" class="btn btn-primary">Simpan Anggota</button>
         </div>
     </form>
 </div>

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once __DIR__ . '/../includes/auth.php';
 wajibPeran(['bendahara']);
 require_once __DIR__ . '/../includes/koneksi.php';
@@ -11,14 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = $_POST['status'] ?? '';
 
     if ($noKk === '' || $nama === '' || $alamat === '' || !in_array($status, ['aktif', 'pindah'], true)) {
-        $_SESSION['flash'] = ['pesan' => 'Data warga belum valid. Periksa kembali isian formulir.'];
-        header('Location: ../warga/tambah.php');
+        $_SESSION['flash'] = ['pesan' => 'Data anggota belum valid. Periksa kembali isian formulir.'];
+        header('Location: ../anggota/tambah.php');
         exit;
     }
 
     try {
         $db = koneksiDatabase();
-        $statement = $db->prepare('INSERT INTO warga (no_kk, nama, alamat, no_hp, status) VALUES (:no_kk, :nama, :alamat, :no_hp, :status)');
+        $statement = $db->prepare('INSERT INTO anggota (no_kk, nama, alamat, no_hp, status) VALUES (:no_kk, :nama, :alamat, :no_hp, :status)');
         $statement->execute([
             ':no_kk' => $noKk,
             ':nama' => $nama,
@@ -27,15 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':status' => $status,
         ]);
     } catch (PDOException $error) {
-        $_SESSION['flash'] = ['pesan' => $error->getCode() === '23505' ? 'No. KK sudah terdaftar. Gunakan nomor lain.' : 'Data warga gagal disimpan ke database.'];
-        header('Location: ../warga/tambah.php');
+        $_SESSION['flash'] = ['pesan' => $error->getCode() === '23505' ? 'No. KK sudah terdaftar. Gunakan nomor lain.' : 'Data anggota gagal disimpan ke database.'];
+        header('Location: ../anggota/tambah.php');
         exit;
     } catch (Throwable $error) {
         tampilkanKesalahanDatabase($error);
     }
 
-    $_SESSION['flash'] = ['pesan' => 'Data warga berhasil disimpan.'];
+    $_SESSION['flash'] = ['pesan' => 'Data anggota berhasil disimpan.'];
 }
 
-header('Location: ../warga/list.php');
+header('Location: ../anggota/list.php');
 exit;
