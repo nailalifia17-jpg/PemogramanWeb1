@@ -21,7 +21,12 @@ try {
 ?>
 
 <div class="card shadow-sm border-0">
-    <h2>Daftar Anggota</h2>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+        <h2 class="mb-0">Daftar Anggota</h2>
+        <?php if (($_SESSION['role'] ?? '') === 'bendahara'): ?>
+            <a href="tambah.php" class="btn btn-primary">Tambah Anggota</a>
+        <?php endif; ?>
+    </div>
 
     <?php if ($flash): ?>
         <p class="flash"><?php echo e($flash['pesan']); ?></p>
@@ -42,7 +47,7 @@ try {
             </thead>
             <tbody>
                 <?php if (empty($daftarAnggota)): ?>
-                    <tr><td colspan="6" class="text-center empty-state">Belum ada data anggota. Silakan tambah lewat menu "Tambah Anggota".</td></tr>
+                    <tr><td colspan="6" class="text-center empty-state">Belum ada data anggota. Gunakan tombol "Tambah Anggota" untuk mulai mencatat data.</td></tr>
                 <?php else: ?>
                     <?php foreach ($daftarAnggota as $w): ?>
                         <tr>

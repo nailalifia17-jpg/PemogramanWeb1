@@ -11,6 +11,7 @@ Jobsheet 12 mengadaptasi konsep integrasi transaksi menjadi modul pencatatan iur
 - Transaction database memastikan catatan iuran dan pemasukan kas tersimpan atau dibatalkan bersama.
 - Daftar iuran menampilkan anggota, periode, tanggal pembayaran, jumlah, dan metode pembayaran.
 - Kategori `Iuran Anggota` ikut muncul pada daftar transaksi dan laporan.
+- Menu `Anggota` membuka daftar anggota; Bendahara dapat memakai tombol `Tambah Anggota` untuk mengisi data yang dibutuhkan sebelum mencatat iuran.
 
 ## Fitur Jobsheet 10
 
@@ -110,5 +111,4 @@ proses/proses_edit_transaksi.php       # UPDATE transaksi
 proses/hapus_anggota.php                 # DELETE anggota via POST
 proses/hapus_transaksi.php             # DELETE transaksi via POST
 ```
-
 

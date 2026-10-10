@@ -19,7 +19,10 @@ unset($_SESSION['flash']);
     <h2>Catat Iuran Anggota</h2>
     <?php if ($flash): ?><p class="flash flash-error"><?php echo e($flash['pesan']); ?></p><?php endif; ?>
     <?php if (!$anggotaAktif): ?>
-        <p class="empty-state">Belum ada anggota aktif. Tambahkan anggota terlebih dahulu.</p>
+        <div class="empty-state">
+            <p>Belum ada anggota aktif. Tambahkan anggota terlebih dahulu.</p>
+            <a href="../anggota/tambah.php" class="btn btn-primary">Tambah Anggota</a>
+        </div>
     <?php else: ?>
         <form id="form-tambah" method="post" action="proses_tambah.php" class="row g-3">
             <?php echo csrf_field(); ?>

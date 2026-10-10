@@ -18,7 +18,8 @@ $__aktif = [
     'list'    => (strpos($__uri, '/transaksi/') !== false && strpos($__uri, '/transaksi/tambah') === false) ? ' active' : '',
     'laporan' => strpos($__uri, '/laporan/') !== false ? ' active' : '',
     'tambah'  => strpos($__uri, '/transaksi/tambah') !== false ? ' active' : '',
-        'iuran'   => strpos($__uri, '/iuran/') !== false ? ' active' : '',
+    'iuran'   => strpos($__uri, '/iuran/') !== false ? ' active' : '',
+    'anggota' => strpos($__uri, '/anggota/') !== false ? ' active' : '',
 ];
 ?>
 <!DOCTYPE html>
@@ -50,6 +51,7 @@ $__aktif = [
                     <li class="nav-item"><a class="nav-link<?php echo $__aktif['list']; ?>" href="<?php echo $base; ?>transaksi/list.php">Daftar Transaksi</a></li>
                     <li class="nav-item"><a class="nav-link<?php echo $__aktif['laporan']; ?>" href="<?php echo $base; ?>laporan/index.php">Laporan</a></li>
                     <?php if (isset($_SESSION['user_id'])): ?>
+                        <li class="nav-item"><a class="nav-link<?php echo $__aktif['anggota']; ?>" href="<?php echo $base; ?>anggota/list.php">Anggota</a></li>
                         <li class="nav-item"><a class="nav-link<?php echo $__aktif['iuran']; ?>" href="<?php echo $base; ?>iuran/list.php">Iuran Anggota</a></li>
                         <?php if (($_SESSION['role'] ?? '') === 'bendahara'): ?>
                             <li class="nav-item"><a class="nav-link<?php echo $__aktif['tambah']; ?>" href="<?php echo $base; ?>transaksi/tambah.php">Tambah Transaksi</a></li>
