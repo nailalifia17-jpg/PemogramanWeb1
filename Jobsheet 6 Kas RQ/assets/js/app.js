@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     initNavToggle();
     initHapusConfirm();
     initTableFilter();
@@ -15,7 +15,8 @@ function initNavToggle() {
     if (!toggler || !navbarCollapse) return;
 
     toggler.addEventListener("click", function () {
-        navbarCollapse.classList.toggle("show");
+        const isExpanded = navbarCollapse.classList.toggle("show");
+        toggler.setAttribute("aria-expanded", String(isExpanded));
     });
 }
 
@@ -24,8 +25,10 @@ function initNavToggle() {
  */
 function initHapusConfirm() {
     document.addEventListener("click", function (event) {
-        const btnHapus = event.target.closest(".btn-hapus");
+        const target = event.target;
+        if (!(target instanceof Element)) return;
 
+        const btnHapus = target.closest(".btn-hapus");
         if (btnHapus) {
             const row = btnHapus.closest("tr");
             const konfirmasi = confirm("Apakah Anda yakin ingin menghapus data ini?");
@@ -45,7 +48,7 @@ function initTableFilter() {
 
     if (!searchInput) return;
 
-    searchInput.addEventListener("keyup", function () {
+    searchInput.addEventListener("input", function () {
         const keyword = searchInput.value.toLowerCase().trim();
         const tableRows = document.querySelectorAll("tbody tr");
 
@@ -75,7 +78,7 @@ function initValidasiForm() {
 
     form.addEventListener("submit", function (event) {
         let isValid = true;
-        const requiredInputs = form.querySelectorAll("input[required]");
+        const requiredInputs = form.querySelectorAll("input[required], select[required], textarea[required]");
 
         requiredInputs.forEach(function (input) {
             hapusError(input);
@@ -89,6 +92,14 @@ function initValidasiForm() {
 
         if (!isValid) {
             event.preventDefault();
+            return;
+        }
+
+        event.preventDefault();
+        const feedback = form.parentElement.querySelector(".form-feedback");
+        if (feedback) {
+            feedback.hidden = false;
+            feedback.textContent = "Form valid. Pada Jobsheet 6, data belum disimpan.";
         }
     });
 }

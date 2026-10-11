@@ -1,26 +1,30 @@
 [
     {
-        "no_anggota": "A001",
+        "no_kk": "3573010101010001",
         "nama": "Siti Aminah",
-        "alamat": "Malang",
-        "no_hp": "081234567890"
+        "alamat": "Jl. Melati No. 12, Malang",
+        "no_hp": "081234567890",
+        "status": "aktif"
     },
     {
-        "no_anggota": "A002",
+        "no_kk": "3573010101010002",
         "nama": "Budi Santoso",
-        "alamat": "Batu",
-        "no_hp": "081398765432"
+        "alamat": "Jl. Mawar No. 8, Malang",
+        "no_hp": "081398765432",
+        "status": "aktif"
     },
     {
-        "no_anggota": "A003",
+        "no_kk": "3573010101010003",
         "nama": "Citra Dewi",
-        "alamat": "Surabaya",
-        "no_hp": "085711223344"
+        "alamat": "Jl. Kenanga No. 5, Batu",
+        "no_hp": "085711223344",
+        "status": "aktif"
     },
     {
-        "no_anggota": "A004",
+        "no_kk": "3573010101010004",
         "nama": "Dian Sastro",
-        "alamat": "Kediri",
-        "no_hp": "082155667788"
+        "alamat": "Jl. Anggrek No. 3, Malang",
+        "no_hp": "082155667788",
+        "status": "pindah"
     }
 ]

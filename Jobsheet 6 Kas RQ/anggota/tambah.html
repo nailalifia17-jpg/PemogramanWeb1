@@ -1,66 +1,73 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM Kas Yayasan RQ | Tambah Anggota</title>
+    <title>Yayasan Rumah Quran | Tambah Anggota</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body class="bg-light">
-    <!-- Header / Navbar -->
-    <header class="navbar navbar-expand-lg navbar-dark bg-custom shadow-sm">
+<body>
+    <header class="navbar navbar-expand-xl navbar-dark bg-custom shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="../index.html">SIM Kas Yayasan RQ</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand brand" href="../index.html">
+                <img src="../assets/images/logo-rq.png" alt="Logo Yayasan Rumah Quran">
+                Yayasan Rumah Quran
+            </a>
+            <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Buka navigasi">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <nav class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="../index.html">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../buku/list.html">Pemasukan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="list.html">Laporan</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="tambah.html">Tambah Anggota</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../transaksi/list.html">Daftar Transaksi</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="list.html">Anggota</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="container my-4">
-        <section class="card border-0 shadow-sm mb-4">
-            <div class="card-body p-4">
-                <h2 class="card-title text-custom fw-bold mb-3">Tambah Anggota</h2>
-                <form id="form-tambah" style="max-width: 400px;">
-                    <div class="mb-3">
-                        <label for="nama" class="form-label fw-semibold text-secondary">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="no_anggota" class="form-label fw-semibold text-secondary">No. Anggota</label>
-                        <input type="text" class="form-control" id="no_anggota" name="no_anggota" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="alamat" class="form-label fw-semibold text-secondary">Alamat</label>
-                        <input type="text" class="form-control" id="alamat" name="alamat">
-                    </div>
-                    <div class="mb-3">
-                        <label for="no_hp" class="form-label fw-semibold text-secondary">No. HP</label>
-                        <input type="text" class="form-control" id="no_hp" name="no_hp">
-                    </div>
+        <section class="card">
+            <h1 class="section-title">Tambah Anggota</h1>
+            <form id="form-tambah" class="row g-3">
+                <div class="col-12 col-md-6">
+                    <label for="no_kk" class="form-label">Nomor KK</label>
+                    <input type="text" class="form-control" id="no_kk" name="no_kk" maxlength="32" required>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="nama" class="form-label">Nama</label>
+                    <input type="text" class="form-control" id="nama" name="nama" maxlength="120" required>
+                </div>
+                <div class="col-12">
+                    <label for="alamat" class="form-label">Alamat</label>
+                    <textarea class="form-control" id="alamat" name="alamat" rows="3" required></textarea>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="no_hp" class="form-label">No. HP</label>
+                    <input type="tel" class="form-control" id="no_hp" name="no_hp" maxlength="30" required>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-select" id="status" name="status" required>
+                        <option value="aktif">Aktif</option>
+                        <option value="pindah">Pindah</option>
+                    </select>
+                </div>
+                <div class="col-12">
                     <button type="submit" class="btn btn-submit rounded-pill px-4 text-white fw-bold">Simpan</button>
-                </form>
-            </div>
+                </div>
+            </form>
+            <p class="form-feedback text-success fw-semibold mt-3 mb-0" role="status" hidden>Form valid. Pada Jobsheet 6, data belum disimpan.</p>
+            <p class="text-secondary small mb-0">Pada Jobsheet 6, form ini merupakan tampilan dan latihan validasi. Data anggota belum disimpan ke server.</p>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="text-center text-secondary py-3">
-        <p class="mb-0">&copy; 2026 SIM Kas Yayasan RQ &mdash; Jobsheet 5 (JS DOM & Event)</p>
+    <footer>
+        <p>&copy; 2026 Yayasan Rumah Quran</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/app.js"></script>
 </body>
 </html>
-

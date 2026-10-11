@@ -1,104 +1,44 @@
-﻿# Wireframe & User Flow â€” SIMPUS-Mini
+# Wireframe — SIM Kas Yayasan RQ
 
-Sub-CPMK: Merancang UI/UX aplikasi (proyek).
+Jobsheet 6 meneruskan tampilan dan alur SIM Kas RQ dari jobsheet sebelumnya. Perubahan utama pada tahap ini adalah data transaksi dan anggota diambil dari berkas JSON dan ditampilkan secara dinamis.
 
-Halaman yang sudah ada (Beranda, Daftar/Tambah Buku, Daftar/Tambah Anggota â€” Jobsheet 1-3) belum mencakup fitur Login, Dashboard Petugas, dan Peminjaman/Pengembalian. Dokumen ini merancang wireframe untuk halaman-halaman tersebut sebelum diimplementasikan mulai Jobsheet 5 dan seterusnya.
+## Beranda
 
-## Aktor
-- **Tamu**: hanya bisa melihat katalog buku (Beranda, Daftar Buku) tanpa login.
-- **Petugas**: login untuk mengakses seluruh fitur CRUD dan transaksi peminjaman.
-
-## User Flow â€” Peminjaman Buku
-
-```
-[Petugas Login] -> [Dashboard] -> [Pilih menu "Peminjaman Baru"]
-        -> [Pilih Anggota] -> [Pilih Buku (stok > 0)]
-        -> [Simpan] -> [Stok buku berkurang 1] -> [Kembali ke Dashboard]
-```
-
-## User Flow â€” Pengembalian Buku
-
-```
-[Dashboard] -> [Menu "Pengembalian"] -> [Cari transaksi aktif (anggota/buku)]
-        -> [Tandai "Dikembalikan"] -> [Stok buku bertambah 1]
-        -> [Kembali ke Dashboard]
+```text
++--------------------------------------------------------------+
+| Yayasan Rumah Quran | Beranda | Daftar Transaksi | Laporan | Iuran Anggota |
++--------------------------------------------------------------+
+| Selamat Datang di Sistem Informasi Kas Yayasan Rumah Quran   |
+| Pencatatan pemasukan dan pengeluaran yayasan                 |
+|                                                              |
+| Ringkasan Keuangan                                           |
+| Total Pemasukan | Total Pengeluaran | Saldo Kas               |
+|                                                              |
+| Aktivitas Terbaru                                            |
+| Jenis | Keterangan dan jumlah | Tanggal                      |
++--------------------------------------------------------------+
 ```
 
-## Wireframe: Halaman Login
+## Daftar Transaksi
 
-```
-+--------------------------------------+
-|              SIMPUS-Mini             |
-|--------------------------------------|
-|                                      |
-|        [ Login Petugas ]            |
-|                                      |
-|   Username : [______________]       |
-|   Password : [______________]       |
-|                                      |
-|          [   Masuk   ]              |
-|                                      |
-|   Belum punya akun? Daftar di sini  |
-+--------------------------------------+
+```text
++--------------------------------------------------------------+
+| Daftar Transaksi Kas                    [Cari transaksi...]  |
+|                                                              |
+| Tanggal | Keterangan | Kategori | Jenis | Jumlah | Metode | Aksi |
+|         | Data diisi dinamis dari data/transaksi.json         |
++--------------------------------------------------------------+
 ```
 
-## Wireframe: Dashboard Petugas
+## Daftar Anggota
 
-```
-+-----------------------------------------------------+
-| SIMPUS-Mini      Beranda | Buku | Anggota | Peminjaman | (Nama Petugas) Logout |
-|-------------------------------------------------------|
-|  [Total Buku]   [Total Anggota]   [Sedang Dipinjam]    |
-|                                                         |
-|  Aksi Cepat:                                           |
-|  [ + Peminjaman Baru ]   [ + Pengembalian ]            |
-|                                                         |
-|  Transaksi Terbaru                                     |
-|  --------------------------------------------------    |
-|  Anggota | Buku | Tgl Pinjam | Status                  |
-+-----------------------------------------------------+
+```text
++--------------------------------------------------------------+
+| Daftar Anggota                           [Cari anggota...]   |
+|                                                              |
+| No. KK | Nama | Alamat | No. HP | Status | Aksi               |
+|        | Data diisi dinamis dari data/anggota.json            |
++--------------------------------------------------------------+
 ```
 
-## Wireframe: Form Peminjaman
-
-```
-+--------------------------------------+
-|  Form Peminjaman Buku                |
-|--------------------------------------|
-|  Anggota : [ dropdown pilih anggota ]|
-|  Buku    : [ dropdown, hanya stok>0 ]|
-|  Tanggal Pinjam : [ auto: hari ini ] |
-|                                      |
-|          [  Simpan Peminjaman  ]    |
-+--------------------------------------+
-```
-
-## Wireframe: Form Pengembalian
-
-```
-+--------------------------------------+
-|  Pengembalian Buku                   |
-|--------------------------------------|
-|  Cari transaksi aktif:               |
-|  [ nama anggota / judul buku ______ ]|
-|                                      |
-|  Anggota | Buku | Tgl Pinjam | [Kembalikan] |
-+--------------------------------------+
-```
-
-## Wireframe: Riwayat Peminjaman per Anggota
-
-```
-+--------------------------------------+
-|  Riwayat Peminjaman â€” Siti Aminah    |
-|--------------------------------------|
-|  Buku            | Pinjam   | Kembali | Status      |
-|  Laskar Pelangi   | 01/07    | 10/07   | Selesai     |
-|  Bumi Manusia      | 15/07    | -       | Dipinjam    |
-+--------------------------------------+
-```
-
-## Konsistensi dengan Desain yang Sudah Berjalan
-- Warna aksen, tipografi navbar, dan gaya tabel/kartu mengikuti `assets/css/style.css` yang sudah dibangun sejak Jobsheet 2-3.
-- Navbar akan ditambah menu **Peminjaman** dan indikator status login (nama petugas / tombol Logout) mulai implementasi di Jobsheet 10.
-- Edge case yang perlu ditangani saat implementasi: buku stok habis tidak boleh dipilih di form peminjaman; anggota dengan tunggakan terlambat divalidasi di Jobsheet 12 (tugas mandiri).
+Navigasi utama Jobsheet 6 menampilkan Beranda, Daftar Transaksi, dan Anggota. Tombol Tambah Transaksi berada di halaman daftar transaksi. Halaman daftar menampilkan indikator loading saat JSON diambil dan pesan error jika permintaan gagal. Tombol Edit membuka form modal; perubahannya disimpan di `localStorage` browser, bukan ke berkas JSON. Tombol Hapus bekerja pada baris yang dibuat dinamis melalui event delegation. Form tambah transaksi dan anggota hanya latihan validasi.

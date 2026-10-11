@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "tanggal": "2026-09-01",
+        "bulan": 9,
+        "tahun": 2026,
+        "keterangan": "Iuran bulanan keluarga jamaah",
+        "jenis": "masuk",
+        "kategori": "Iuran",
+        "jumlah": 1250000,
+        "metode": "tunai"
+    },
+    {
+        "id": 2,
+        "tanggal": "2026-09-03",
+        "bulan": 9,
+        "tahun": 2026,
+        "keterangan": "Infaq operasional Rumah Quran",
+        "jenis": "masuk",
+        "kategori": "Infaq",
+        "jumlah": 850000,
+        "metode": "transfer"
+    },
+    {
+        "id": 3,
+        "tanggal": "2026-09-05",
+        "bulan": 9,
+        "tahun": 2026,
+        "keterangan": "Pembelian kitab dan perlengkapan belajar",
+        "jenis": "keluar",
+        "kategori": "Operasional",
+        "jumlah": 425000,
+        "metode": "tunai"
+    },
+    {
+        "id": 4,
+        "tanggal": "2026-09-08",
+        "bulan": 9,
+        "tahun": 2026,
+        "keterangan": "Sedekah Subuh jamaah",
+        "jenis": "masuk",
+        "kategori": "Sedekah Subuh",
+        "jumlah": 375000,
+        "metode": "transfer"
+    },
+    {
+        "id": 5,
+        "tanggal": "2026-09-10",
+        "bulan": 9,
+        "tahun": 2026,
+        "keterangan": "Pembayaran listrik dan air",
+        "jenis": "keluar",
+        "kategori": "Operasional",
+        "jumlah": 310000,
+        "metode": "transfer"
+    },
+    {
+        "id": 6,
+        "tanggal": "2026-09-12",
+        "bulan": 9,
+        "tahun": 2026,
+        "keterangan": "Wakaf untuk renovasi ruang belajar",
+        "jenis": "masuk",
+        "kategori": "Wakaf",
+        "jumlah": 2000000,
+        "metode": "transfer"
+    },
+    {
+        "id": 7,
+        "tanggal": "2026-09-15",
+        "bulan": 9,
+        "tahun": 2026,
+        "keterangan": "Bisyaroh pengajar Al-Quran",
+        "jenis": "keluar",
+        "kategori": "Bisyaroh",
+        "jumlah": 900000,
+        "metode": "tunai"
+    },
+    {
+        "id": 8,
+        "tanggal": "2026-09-18",
+        "bulan": 9,
+        "tahun": 2026,
+        "keterangan": "Infaq kegiatan santri",
+        "jenis": "masuk",
+        "kategori": "Infaq",
+        "jumlah": 625000,
+        "metode": "tunai"
+    },
+    {
+        "id": 9,
+        "tanggal": "2026-09-22",
+        "bulan": 9,
+        "tahun": 2026,
+        "keterangan": "Konsumsi kegiatan santri",
+        "jenis": "keluar",
+        "kategori": "Kegiatan",
+        "jumlah": 275000,
+        "metode": "tunai"
+    },
+    {
+        "id": 10,
+        "tanggal": "2026-09-25",
+        "bulan": 9,
+        "tahun": 2026,
+        "keterangan": "Donasi keluarga jamaah",
+        "jenis": "masuk",
+        "kategori": "Donasi",
+        "jumlah": 500000,
+        "metode": "transfer"
+    }
+]
