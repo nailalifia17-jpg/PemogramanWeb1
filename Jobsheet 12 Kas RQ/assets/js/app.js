@@ -169,27 +169,27 @@ function initValidasiForm() {
             }
 
 
-            const noKk =
+            const noAnggota =
                 form.querySelector(
-                    "[name='no_kk']"
+                    "[name='no_anggota']"
                 );
 
             if (
-                noKk &&
-                noKk.value.trim() === ""
+                noAnggota &&
+                noAnggota.value.trim() === ""
             ) {
 
                 tampilkanError(
-                    noKk,
-                    "No. KK wajib diisi."
+                    noAnggota,
+                    "Nomor anggota wajib diisi."
                 );
 
                 valid = false;
 
             }
-            else if (noKk) {
+            else if (noAnggota) {
 
-                hapusError(noKk);
+                hapusError(noAnggota);
 
             }
 

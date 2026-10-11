@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS anggota (
     id BIGSERIAL PRIMARY KEY,
-    no_kk VARCHAR(32) NOT NULL UNIQUE,
+    no_anggota VARCHAR(32) NOT NULL UNIQUE,
     nama VARCHAR(120) NOT NULL,
     alamat TEXT NOT NULL,
     no_hp VARCHAR(30) NOT NULL DEFAULT '',
-    status VARCHAR(20) NOT NULL DEFAULT 'aktif' CHECK (status IN ('aktif', 'pindah')),
+    status VARCHAR(20) NOT NULL DEFAULT 'aktif' CHECK (status IN ('aktif', 'nonaktif')),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

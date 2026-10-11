@@ -2,11 +2,12 @@
 
 Folder ini meneruskan fondasi Jobsheet 11 untuk SIM Kas Yayasan Rumah Quran Mumtazah.
 
-Jobsheet 12 mengadaptasi konsep integrasi transaksi menjadi modul pencatatan iuran anggota. Setiap pembayaran menyimpan satu baris iuran dan satu pemasukan kas secara atomik.
+Jobsheet 12 mengadaptasi konsep integrasi transaksi ke kebutuhan SIM Kas Yayasan Rumah Quran Mumtazah. Fokusnya bukan peminjaman buku, tetapi pencatatan iuran anggota: setiap pembayaran membuat catatan iuran yang terhubung dengan anggota dan satu transaksi kas masuk. Kedua catatan disimpan secara atomik.
 
 ## Fitur Jobsheet 12
 
-- Tabel `iuran` berelasi ke `anggota` dan `transaksi` dengan foreign key.
+- Data anggota Yayasan menggunakan nomor anggota, bukan nomor kartu keluarga atau data warga/RT.
+- Tabel `iuran` berelasi ke anggota Yayasan dan transaksi kas menggunakan foreign key.
 - Bendahara mencatat pembayaran maksimal satu kali per anggota untuk setiap bulan dan tahun.
 - Transaction database memastikan catatan iuran dan pemasukan kas tersimpan atau dibatalkan bersama.
 - Daftar iuran menampilkan anggota, periode, tanggal pembayaran, jumlah, dan metode pembayaran.
@@ -20,7 +21,7 @@ Jobsheet 12 mengadaptasi konsep integrasi transaksi menjadi modul pencatatan iur
 - Logout dengan penghancuran session.
 - Navbar menampilkan nama dan peran pengurus saat login.
 - Bendahara dapat menambah, mengedit, menghapus data, dan mengunduh laporan.
-- Ketua RT hanya dapat melihat data dan mengunduh laporan.
+- Ketua Yayasan hanya dapat melihat data dan mengunduh laporan.
 - Semua halaman aplikasi membutuhkan login; halaman login/register tetap publik.
 - Tombol Download Excel menghasilkan CSV yang bisa dibuka dengan Microsoft Excel.
 - Tombol Download PDF membuka dialog cetak browser; pilih Save as PDF.
@@ -56,7 +57,13 @@ psql -U postgres -d sim_kas_yayasan_rq -f sql/01_schema.sql
 psql -U postgres -d sim_kas_yayasan_rq -f sql/02_users.sql
 ```
 
-Untuk database yang sudah lama, jalankan `sql/03_migrasi_anggota.sql` sebelum skema anggota. Setelah skema utama dan users siap, buat tabel iuran dengan:
+Untuk database lama yang sudah memiliki tabel `anggota`, cadangkan data lalu jalankan migrasi identitas anggota:
+
+```bash
+psql -U postgres -d sim_kas_yayasan_rq -f sql/05_migrasi_anggota_yayasan.sql
+```
+
+Migrasi mengubah identitas `no_kk` menjadi nomor anggota `RQ-######`, mempertahankan data nama, alamat, dan kontak, serta mengubah status `pindah` menjadi `nonaktif`. Untuk database yang masih memakai tabel `warga`, jalankan `sql/03_migrasi_anggota.sql` lebih dahulu. Setelah skema utama dan users siap, buat tabel iuran dengan:
 
 ```bash
 psql -U postgres -d sim_kas_yayasan_rq -f sql/04_iuran.sql
@@ -91,13 +98,15 @@ Buka `http://localhost:8087`.
 
 Untuk membuat akun, buka menu `Login` lalu pilih `Daftar`. Setelah login, menu tambah/edit/hapus akan dapat digunakan.
 
-Gunakan peran `Bendahara` untuk akun yang mengelola data. Gunakan peran `Ketua RT` untuk akun yang hanya membaca dan mengunduh laporan.
+Gunakan peran `Bendahara` untuk akun yang mengelola data. Gunakan peran `Ketua Yayasan` untuk akun yang hanya membaca dan mengunduh laporan.
 
 ## Uji Modul Iuran
 
 Login sebagai Bendahara, buka **Iuran Anggota**, catat pembayaran untuk anggota aktif, lalu pastikan pembayaran muncul pada daftar iuran dan transaksi pemasukan dengan kategori **Iuran Anggota**. Coba catat ulang anggota dan periode yang sama; permintaan kedua harus ditolak tanpa membuat pemasukan kas duplikat.
 
 Transaksi kas dan iuran tersimpan dalam satu transaction; jalankan `sql/04_iuran.sql` sebelum membuka modul.
+
+Jobsheet ini memakai konsep foreign key, transaction, validasi, dan JOIN dari materi integrasi, tetapi menerapkannya pada alur keuangan yayasan. Tidak ada modul katalog buku, peminjaman, atau pengembalian.
 
 ## Struktur CRUD
 
@@ -111,4 +120,3 @@ proses/proses_edit_transaksi.php       # UPDATE transaksi
 proses/hapus_anggota.php                 # DELETE anggota via POST
 proses/hapus_transaksi.php             # DELETE transaksi via POST
 ```
-

@@ -5,7 +5,7 @@ require_once __DIR__ . '/../includes/koneksi.php';
 
 try {
     $db = koneksiDatabase();
-    $daftarIuran = $db->query('SELECT i.id, i.bulan, i.tahun, i.tanggal_bayar, i.jumlah, i.metode, a.no_kk, a.nama FROM iuran i JOIN anggota a ON a.id = i.anggota_id ORDER BY i.tahun DESC, i.bulan DESC, i.tanggal_bayar DESC, i.id DESC')->fetchAll();
+    $daftarIuran = $db->query('SELECT i.id, i.bulan, i.tahun, i.tanggal_bayar, i.jumlah, i.metode, a.no_anggota, a.nama FROM iuran i JOIN anggota a ON a.id = i.anggota_id ORDER BY i.tahun DESC, i.bulan DESC, i.tanggal_bayar DESC, i.id DESC')->fetchAll();
     $ringkasan = $db->query('SELECT COUNT(*) AS jumlah_pembayaran, COALESCE(SUM(jumlah), 0) AS total_iuran FROM iuran')->fetch();
 } catch (Throwable $error) {
     tampilkanKesalahanDatabase($error);
@@ -38,7 +38,7 @@ include __DIR__ . '/../includes/header.php';
                 <?php else: ?>
                     <?php foreach ($daftarIuran as $iuran): ?>
                         <tr>
-                            <td><?php echo e($iuran['nama']); ?><br><small class="text-muted"><?php echo e($iuran['no_kk']); ?></small></td>
+                            <td><?php echo e($iuran['nama']); ?><br><small class="text-muted"><?php echo e($iuran['no_anggota']); ?></small></td>
                             <td><?php echo e($namaBulan[(int) $iuran['bulan']] ?? '-'); ?> <?php echo (int) $iuran['tahun']; ?></td>
                             <td><?php echo e($iuran['tanggal_bayar']); ?></td>
                             <td>Rp <?php echo number_format((int) $iuran['jumlah'], 0, ',', '.'); ?></td>

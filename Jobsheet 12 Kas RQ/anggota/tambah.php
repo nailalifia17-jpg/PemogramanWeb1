@@ -18,12 +18,12 @@ unset($_SESSION['flash']);
     <form id="form-tambah" method="post" action="../proses/proses_tambah_anggota.php" class="row g-3">
         <?php echo csrf_field(); ?>
         <div class="col-md-6">
-            <label for="nama" class="form-label">Nama Kepala Keluarga</label>
+            <label for="nama" class="form-label">Nama Anggota Yayasan</label>
             <input type="text" id="nama" name="nama" class="form-control" required>
         </div>
         <div class="col-md-6">
-            <label for="no_kk" class="form-label">No. KK</label>
-            <input type="text" id="no_kk" name="no_kk" class="form-control" required>
+            <label for="no_anggota" class="form-label">Nomor Anggota</label>
+            <input type="text" id="no_anggota" name="no_anggota" class="form-control" placeholder="Contoh: RQ-0001" required>
         </div>
         <div class="col-md-8">
             <label for="alamat" class="form-label">Alamat</label>
@@ -34,10 +34,10 @@ unset($_SESSION['flash']);
             <input type="text" id="no_hp" name="no_hp" class="form-control">
         </div>
         <div class="col-md-6">
-            <label for="status" class="form-label">Status Kependudukan</label>
-            <select id="status" name="status" class="form-select" role="status" aria-label="Status kependudukan" required>
+            <label for="status" class="form-label">Status Keanggotaan</label>
+            <select id="status" name="status" class="form-select" required>
                 <option value="aktif" selected>Aktif</option>
-                <option value="pindah">Pindah</option>
+                <option value="nonaktif">Nonaktif</option>
             </select>
         </div>
         <div class="col-12">

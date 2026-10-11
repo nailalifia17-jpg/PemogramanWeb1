@@ -4,19 +4,19 @@ require_once __DIR__ . '/koneksi.php';
 
 function ambilAnggota(PDO $db): array
 {
-    return $db->query('SELECT id, no_kk, nama, alamat, no_hp, status FROM anggota ORDER BY id DESC')->fetchAll();
+    return $db->query('SELECT id, no_anggota, nama, alamat, no_hp, status FROM anggota ORDER BY id DESC')->fetchAll();
 }
 
 function hitungAnggota(PDO $db, string $q = ''): int
 {
-    $statement = $db->prepare('SELECT COUNT(*) FROM anggota WHERE no_kk ILIKE :q OR nama ILIKE :q OR alamat ILIKE :q OR no_hp ILIKE :q');
+    $statement = $db->prepare('SELECT COUNT(*) FROM anggota WHERE no_anggota ILIKE :q OR nama ILIKE :q OR alamat ILIKE :q OR no_hp ILIKE :q');
     $statement->execute([':q' => '%' . $q . '%']);
     return (int) $statement->fetchColumn();
 }
 
 function ambilAnggotaHalaman(PDO $db, string $q, int $limit, int $offset): array
 {
-    $statement = $db->prepare('SELECT id, no_kk, nama, alamat, no_hp, status FROM anggota WHERE no_kk ILIKE :q OR nama ILIKE :q OR alamat ILIKE :q OR no_hp ILIKE :q ORDER BY id DESC LIMIT :limit OFFSET :offset');
+    $statement = $db->prepare('SELECT id, no_anggota, nama, alamat, no_hp, status FROM anggota WHERE no_anggota ILIKE :q OR nama ILIKE :q OR alamat ILIKE :q OR no_hp ILIKE :q ORDER BY id DESC LIMIT :limit OFFSET :offset');
     $statement->bindValue(':q', '%' . $q . '%', PDO::PARAM_STR);
     $statement->bindValue(':limit', $limit, PDO::PARAM_INT);
     $statement->bindValue(':offset', $offset, PDO::PARAM_INT);
@@ -89,7 +89,7 @@ function ambilTransaksiHalaman(PDO $db, string $q, ?int $bulan, ?int $tahun, int
 
 function ambilAnggotaDenganId(PDO $db, int $id): ?array
 {
-    $statement = $db->prepare('SELECT id, no_kk, nama, alamat, no_hp, status FROM anggota WHERE id = :id');
+    $statement = $db->prepare('SELECT id, no_anggota, nama, alamat, no_hp, status FROM anggota WHERE id = :id');
     $statement->execute([':id' => $id]);
     return $statement->fetch() ?: null;
 }
@@ -110,4 +110,3 @@ function ringkasanTransaksi(PDO $db): array
         'total_keluar' => (int) $summary['total_keluar'],
     ];
 }
-

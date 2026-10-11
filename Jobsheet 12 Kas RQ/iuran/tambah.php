@@ -6,7 +6,7 @@ require_once __DIR__ . '/../includes/koneksi.php';
 
 try {
     $db = koneksiDatabase();
-    $anggotaAktif = $db->query("SELECT id, no_kk, nama FROM anggota WHERE status = 'aktif' ORDER BY nama ASC")->fetchAll();
+    $anggotaAktif = $db->query("SELECT id, no_anggota, nama FROM anggota WHERE status = 'aktif' ORDER BY nama ASC")->fetchAll();
 } catch (Throwable $error) {
     tampilkanKesalahanDatabase($error);
 }
@@ -27,11 +27,11 @@ unset($_SESSION['flash']);
         <form id="form-tambah" method="post" action="proses_tambah.php" class="row g-3">
             <?php echo csrf_field(); ?>
             <div class="col-md-6">
-                <label for="anggota_id" class="form-label">Anggota</label>
+                <label for="anggota_id" class="form-label">Anggota Yayasan</label>
                 <select id="anggota_id" name="anggota_id" class="form-select" required>
                     <option value="">Pilih anggota</option>
                     <?php foreach ($anggotaAktif as $anggota): ?>
-                        <option value="<?php echo (int) $anggota['id']; ?>"><?php echo e($anggota['nama']); ?> (<?php echo e($anggota['no_kk']); ?>)</option>
+                        <option value="<?php echo (int) $anggota['id']; ?>"><?php echo e($anggota['nama']); ?> (<?php echo e($anggota['no_anggota']); ?>)</option>
                     <?php endforeach; ?>
                 </select>
             </div>

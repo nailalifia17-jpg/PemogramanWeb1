@@ -34,8 +34,8 @@ try {
 
     <form method="get" class="search-box row g-2 align-items-end mb-3">
         <div class="col-md-9">
-        <label for="search-input">Cari Nama / No. KK</label>
-        <input type="text" id="search-input" name="q" class="form-control" value="<?php echo e($q); ?>" placeholder="Ketik nama atau no. KK...">
+        <label for="search-input">Cari Nama / Nomor Anggota</label>
+        <input type="text" id="search-input" name="q" class="form-control" value="<?php echo e($q); ?>" placeholder="Ketik nama atau nomor anggota...">
         </div>
         <div class="col-md-3 d-flex gap-2"><button type="submit" class="btn btn-primary">Cari</button><a href="list.php" class="btn btn-outline-secondary">Reset</a></div>
     </form>
@@ -43,7 +43,7 @@ try {
     <div class="table-responsive">
         <table class="table table-striped table-hover align-middle" role="table">
             <thead>
-                <tr><th scope="col">No. KK</th><th scope="col">Nama Kepala Keluarga</th><th scope="col">Alamat</th><th scope="col">No. HP</th><th scope="col">Status Kependudukan</th><th scope="col">Aksi</th></tr>
+                <tr><th scope="col">Nomor Anggota</th><th scope="col">Nama Anggota</th><th scope="col">Alamat</th><th scope="col">No. HP</th><th scope="col">Status Keanggotaan</th><th scope="col">Aksi</th></tr>
             </thead>
             <tbody>
                 <?php if (empty($daftarAnggota)): ?>
@@ -51,11 +51,11 @@ try {
                 <?php else: ?>
                     <?php foreach ($daftarAnggota as $w): ?>
                         <tr>
-                            <td><?php echo e($w['no_kk']); ?></td>
+                            <td><?php echo e($w['no_anggota']); ?></td>
                             <td><?php echo e($w['nama']); ?></td>
                             <td><?php echo e($w['alamat']); ?></td>
                             <td><?php echo e($w['no_hp']); ?></td>
-                            <td><span class="badge text-bg-<?php echo $w['status'] === 'aktif' ? 'success' : 'secondary'; ?>" role="status" aria-label="Status kependudukan: <?php echo e(ucfirst($w['status'])); ?>"><?php echo e(ucfirst($w['status'])); ?></span></td>
+                            <td><span class="badge text-bg-<?php echo $w['status'] === 'aktif' ? 'success' : 'secondary'; ?>" role="status" aria-label="Status keanggotaan: <?php echo e(ucfirst($w['status'])); ?>"><?php echo e(ucfirst($w['status'])); ?></span></td>
                             <td>
                                 <?php if (($_SESSION['role'] ?? '') === 'bendahara'): ?>
                                     <a href="edit.php?id=<?php echo (int) $w['id']; ?>" class="btn btn-sm btn-outline-primary">Edit</a>
