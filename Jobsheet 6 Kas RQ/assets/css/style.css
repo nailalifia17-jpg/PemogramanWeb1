@@ -1,6 +1,5 @@
 ﻿/* ==========================================================
    SIM Kas Yayasan Rumah Quran Mumtazah
-   Tema hijau sage + Bootstrap 5.3 (semua class lama dipertahankan)
    ========================================================== */
 :root {
     --hijau-tua: #14532d;
@@ -408,8 +407,7 @@ tr:nth-child(even) { background-color: #fafbff; }
 .tabel-buku-kas .baris-saldo-akhir-cetak td { background-color: #fdf1cf; border: 1px solid #808080; }
 
 /* ========================================
-   KOMPATIBILITAS CLASS BOOTSTRAP
-   (halaman lama memakai shadow-sm, btn-outline-*, text-bg-*, pagination)
+   KOMPATIBILITAS CLASS BOOTSTRAP (halaman lama memakai shadow-sm, btn-outline-*, text-bg-*, pagination)
    ======================================== */
 .card.shadow-sm { box-shadow: var(--kartu-shadow) !important; }
 .card.border-0 { border: 1px solid var(--garis) !important; }

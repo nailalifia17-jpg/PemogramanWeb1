@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yayasan Rumah Quran | Anggota</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
@@ -11,17 +13,34 @@
     <header class="navbar navbar-expand-xl navbar-dark bg-custom shadow-sm">
         <div class="container">
             <a class="navbar-brand brand" href="../index.html">
-                <img src="../assets/images/logo-rq.png" alt="Logo Yayasan Rumah Quran">
+                <img src="../assets/images/logo-rq.png"
+                     alt="Logo Yayasan Rumah Quran">
                 Yayasan Rumah Quran
             </a>
-            <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Buka navigasi">
+
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Buka navigasi">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <nav class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../transaksi/list.html">Daftar Transaksi</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="list.html">Anggota</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../transaksi/list.html">
+                            Daftar Transaksi
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="list.html">Anggota</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -32,12 +51,21 @@
             <div class="row align-items-center mb-4">
                 <div class="col-md-6 d-flex align-items-center justify-content-between">
                     <h1 class="section-title mb-0">Daftar Anggota</h1>
-                    <a class="btn btn-submit btn-sm rounded-pill" href="tambah.html">Tambah Anggota</a>
+
+                    <a class="btn btn-submit btn-sm rounded-pill"
+                       href="tambah.html">
+                        Tambah Anggota
+                    </a>
                 </div>
+
                 <div class="col-md-6 d-flex justify-content-md-end mt-3 mt-md-0">
                     <div class="input-group search-container">
-                        <span class="input-group-text bg-white text-secondary border-end-0" aria-hidden="true">&#128269;</span>
-                        <input type="search" class="form-control search-box border-start-0 ps-0" placeholder="Cari anggota..." aria-label="Cari anggota">
+                        <span class="input-group-text bg-white text-secondary border-end-0"
+                              aria-hidden="true">&#128269;</span>
+                        <input type="search"
+                               class="form-control search-box border-start-0 ps-0"
+                               placeholder="Cari anggota..."
+                               aria-label="Cari anggota">
                     </div>
                 </div>
             </div>
@@ -46,11 +74,9 @@
                 <table class="table table-bordered table-striped table-hover align-middle mb-0">
                     <thead>
                         <tr class="table-header-custom">
-                            <th scope="col">No. KK</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Alamat</th>
                             <th scope="col">No. HP</th>
-                            <th scope="col" class="text-center">Status</th>
                             <th scope="col" class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -60,45 +86,66 @@
         </section>
     </main>
 
-    <div class="modal fade" id="modal-edit-anggota" tabindex="-1" aria-labelledby="judul-edit-anggota" aria-hidden="true">
+    <div class="modal fade" id="modal-edit-anggota"
+         tabindex="-1" aria-labelledby="judul-edit-anggota"
+         aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <form id="form-edit-anggota">
                     <div class="modal-header">
-                        <h2 class="modal-title fs-5" id="judul-edit-anggota">Edit Anggota</h2>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                        <h2 class="modal-title fs-5" id="judul-edit-anggota">
+                            Edit Anggota
+                        </h2>
+                        <button type="button" class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Tutup"></button>
                     </div>
+
                     <div class="modal-body">
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <label for="edit-no-kk" class="form-label">Nomor KK</label>
-                                <input id="edit-no-kk" name="no_kk" type="text" class="form-control" maxlength="32" required>
+                                <label for="edit-nama-anggota"
+                                       class="form-label">Nama</label>
+                                <input id="edit-nama-anggota"
+                                       name="nama" type="text"
+                                       class="form-control"
+                                       maxlength="120" required>
                             </div>
-                            <div class="col-md-6">
-                                <label for="edit-nama-anggota" class="form-label">Nama</label>
-                                <input id="edit-nama-anggota" name="nama" type="text" class="form-control" maxlength="120" required>
-                            </div>
+
                             <div class="col-12">
-                                <label for="edit-alamat-anggota" class="form-label">Alamat</label>
-                                <textarea id="edit-alamat-anggota" name="alamat" class="form-control" rows="3" required></textarea>
+                                <label for="edit-alamat-anggota"
+                                       class="form-label">Alamat</label>
+                                <textarea id="edit-alamat-anggota"
+                                          name="alamat"
+                                          class="form-control"
+                                          rows="3" required></textarea>
                             </div>
+
                             <div class="col-md-6">
-                                <label for="edit-no-hp-anggota" class="form-label">No. HP</label>
-                                <input id="edit-no-hp-anggota" name="no_hp" type="tel" class="form-control" maxlength="30" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="edit-status-anggota" class="form-label">Status</label>
-                                <select id="edit-status-anggota" name="status" class="form-select" required>
-                                    <option value="aktif">Aktif</option>
-                                    <option value="pindah">Pindah</option>
-                                </select>
+                                <label for="edit-no-hp-anggota"
+                                       class="form-label">No. HP</label>
+                                <input id="edit-no-hp-anggota"
+                                       name="no_hp" type="tel"
+                                       class="form-control"
+                                       maxlength="30" required>
                             </div>
                         </div>
-                        <p class="form-feedback mt-3 mb-0" role="status" hidden></p>
+
+                        <p class="form-feedback mt-3 mb-0"
+                           role="status" hidden></p>
                     </div>
+
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-submit rounded-pill text-white fw-bold">Simpan Perubahan</button>
+                        <button type="button"
+                                class="btn btn-outline-secondary rounded-pill"
+                                data-bs-dismiss="modal">
+                            Batal
+                        </button>
+
+                        <button type="submit"
+                                class="btn btn-submit rounded-pill text-white fw-bold">
+                            Simpan Perubahan
+                        </button>
                     </div>
                 </form>
             </div>
